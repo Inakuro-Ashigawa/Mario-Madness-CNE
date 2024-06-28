@@ -29,7 +29,6 @@ public var timeBar:FlxBar;
 public var timeTxt:FlxText; 
 public var hudTxt:FlxText;
 var hudTxtTween:FlxTween;
-public var healthOverlay:FlxSprite;
 var ratingFC:String = "FC";
 public var botplayTxt:FlxText;
 public var botplaySine:Float = 0;
@@ -162,14 +161,11 @@ function onPlayerHit(event) {
 
 function postCreate() {
 
-    healthOverlay = new FlxSprite(healthBarBG.x - 41, healthBarBG.y - 17).loadGraphic(Paths.image("game/hud/Mario Madness/healthBarBG"));
-    healthOverlay.cameras = [camHUD];
-    insert(members.indexOf(icoP2), healthOverlay);
-    healthBarBG.visible = false;
 
     for (i in [missesTxt, accuracyTxt, scoreTxt]) i.visible = false;
 
     if (downscroll) hudTxt.y = healthBarBG.y - 58;
+
 
     insert(members.indexOf(icoP1), hudTxt);
 
