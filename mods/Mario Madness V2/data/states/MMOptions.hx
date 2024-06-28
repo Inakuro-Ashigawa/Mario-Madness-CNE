@@ -38,8 +38,7 @@ var noMan:FlxText;
 var splitHex:Array<String>;
 var splitName:Array<String>;
 var cambiotexto:Int = 0;
-function create()
-{
+function create(){
 
     FlxG.sound.playMusic(Paths.music('options'), 1);
     FlxG.camera.bgColor = 0x00FFFFFF;
@@ -82,52 +81,16 @@ function create()
         optionText.x -= 600+(500*i);
         FlxTween.tween(optionText, {x: optionText.x + 600+(500*i)}, .4 +(0.2*i), {ease: FlxEase.circInOut});
     }
-    changeSelection();
-
-    var verText:FlxText = new FlxText(100, 600, 1280, "Mario's Madness\nv2.0.1", 16);
+    var verText:FlxText = new FlxText(100, 600, 1280, "Mario's Madness - Codename \nv2.0", 16);
     verText.setFormat(Paths.font("mariones.ttf"), 16, FlxColor.RED, "left");
     verText.scrollFactor.set(0.2, 0.2);
     add(verText);
 
     verText.alpha = 0; verText.y += 20;
     FlxTween.tween(verText, {y: verText.y - 20, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: .5});
-
 }
-function update(elapsed:Float)
-	{
-		if (FlxG.keys.justPressed.UP)changeSelection(-1);
-		if (FlxG.keys.justPressed.DOWN) changeSelection(1);
-        if (controls.ACCEPT) gomonkey();
-        if (controls.BACK)  leave();
-    }
-function changeSelection(change:Int = 0)
-	{
-		curSelected = FlxMath.wrap(curSelected + change, 0, options.length-1);
-
-		for (i=>item in grpOptions.members) {
-			item.alpha = 0.4; item.color = 0xFF680F0F;
-			if (item.ID == curSelected) {item.alpha = 1; item.color = 0xFFFF0000;}
-		}
-	}
-    function gomonkey(){
-    for (item in grpOptions.members)
-    {
-        item.alpha = 0;
-    }
-
-    switch (options[curSelected])
-    {
-        case 'Notes':
-            openSubState(new NotesSubstate());
-        case 'Controls':
-            openSubState(new ControlsSubstate());
-        case 'Preferences':
-            openSubState(new PreferencesSubstate());
-        case 'Mario Options':
-            openSubState(new MarioSubstate());
-        case 'Delete Data':
-            openSubState(new DeleteSubstate());
-    }
+function update(elapsed:Float){
+    if (controls.BACK)  leave();
 }
 function leave(){
     FlxG.switchState(new MainMenuState());

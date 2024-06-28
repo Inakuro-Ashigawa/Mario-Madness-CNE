@@ -38,7 +38,7 @@ var verSprites = new FlxTypedGroup();
 var verBoxes:FlxTypedGroup<FlxSprite>;
 var verBoxes = new FlxTypedGroup();
 
-var versions:Array<Dynamic> = [['2.0.1', '01/23/2024']/*, ['3.0.0', '01/08/2035']*/];
+var versions:Array<Dynamic> = [['2.0.1', '01/23/2024'], ['3.0.0', '6/28/2024']];
 
 function create()
 {
@@ -196,20 +196,7 @@ function changePatchNotes(ver:Int) {
 
     FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
     noteText.text = 
-    "-Added v2 Patch Notes
--Added an option to delete all your progress in the options menu
--Added a Skip Button for Cutscenes
--Added VA Credits in the pause menu
--Added Camera Events in Unbeatable
--Optimizations in Overdue
--Rebalanced Difficulty in Abandoned
--Rebalanced writting mechanic in No Party
--Rebalanced mechanic in MARIO SING AND GAME RHYMTH 9
--Fixed Crash when playing Unbeatable without the TV Effect
--Slighty Chart and Sprites Changes in a bunch of songs
--Removed Streamer mode
--Removed Wega
-    ";
+    "ported from souce code will be edited to match later!!!!! - Inakuro";
 
     noteText.visible = true;
     noteText.y = 30;

@@ -286,26 +286,7 @@ function create()
     }
     function update(elapsed:Float)
     {
-        if (!debugmode)
-            {
-                if (FlxG.keys.justPressed.ONE)
-                {
-                    thetimer = new FlxTimer().start(3, function(tmr:FlxTimer)
-                    {
-                        if (FlxG.keys.pressed.ONE)
-                        {
-                            descText.visible = true;
-                            worldText.visible = true;
-                            debugmode = true;
-                            FlxG.sound.playMusic(Paths.music('test'), 0.7);
-                            FlxG.camera.filtersEnabled = false;
-                        }
-                    });
-                }
-                if(FlxG.keys.justReleased.ONE){
-                    thetimer.cancel();
-                }
-    
+
                 if (controls.BACK)
 					{
 						isWarp = false;
@@ -330,9 +311,8 @@ function create()
                     }
     
                     // NORMAL
-                }
-        else{    
-        if (controls.ACCEPT && canPress)
+                } 
+        if (controls.ACCEPT && canPress && startCut)
             {
                 canPress = false;
                 introButton.animation.play('press');
@@ -348,8 +328,6 @@ function create()
                 FlxTween.tween(introBox, {y: 720}, 1, {ease: FlxEase.backIn, startDelay: 0.5});
             }
         }
-    }
-}
 function caminar(direction:String)
 	{
 		trace(direction);
@@ -399,12 +377,7 @@ function caminar(direction:String)
         var thecoords:Array<Float> = [theX[nextPos], theY[nextPos]];
 
         return thecoords;
-    }
-function goToWorld()
-    {
-        FlxG.sound.music.stop();
-        FlxG.switchState(new ModSubState('WarpWorlds/' + canciones[curSelected]));
-}
+		}
 function animStart(nextDir:Int, lastDir:Float, curWorld:Float, pibe:FlxSprite, iswalk:Bool)
     {
         var coords:Array<Float> = getCoords(nextDir, curWorld);

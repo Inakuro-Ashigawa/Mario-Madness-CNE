@@ -1,6 +1,7 @@
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import funkin.menus.MainMenuState;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
@@ -47,6 +48,9 @@ var beatSign:FlxSprite;
 var typin:String = ''; // for the secrets....
 var codeClearTimer:Float = 0;
 var canselectshit:Bool = true;
+
+var ntsc:CustomShader = null;
+var bloom:CustomShader = null;
 
 var menuInfo:Array<{group:Null<FlxTypedGroup<FlxSprite>>, choices:Array<String>, res:FlxPoint, scroll:FlxPoint}> = [
     {
@@ -106,6 +110,7 @@ var lerpCamZoom:Bool = false;
 var camZoomMulti:Float = 1;
 
 function create() {
+
 
     if(FlxG.sound.music == null){
         FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -275,6 +280,15 @@ function create() {
 		FlxTween.tween(FlxG.camera, {zoom: 1}, 1.3, {ease: FlxEase.circInOut});
 		if (showMsg == 0) (new FlxTimer()).start(0.6, function (t:FlxTimer) {canSelectSomethin = lerpCamZoom = true;});
 
+        ntsc = new CustomShader("NTSCGlitch");
+        ntsc.data.glitchAmount.value = [0.4, 0.4];
+        FlxG.camera.addShader(ntsc);
+    
+        bloom = new CustomShader("Bloom");
+        bloom.data.Size.value = [1, 1];
+        bloom.data.dim.value = [.5, .5];
+        FlxG.camera.addShader(bloom);
+
 }
 function reloadBG(){
     remove(fondo11);
@@ -392,22 +406,18 @@ var fullTimer:Float = 0;
 function update(elapsed:Float) {
     fullTimer += elapsed;
 
+    if (ntsc != null) ntsc.data.time.value = [fullTimer, fullTimer];
 
     if (FlxG.keys.justPressed.SEVEN) {
         openSubState(new EditorPicker());
         persistentUpdate = false;
         persistentDraw = true;
     }
-
-    
-
     if (controls.SWITCHMOD) {
         openSubState(new ModSwitchMenu());
         persistentUpdate = false;
         persistentDraw = true;
     }
-
-    
     if (FlxG.sound.music.volume < 0.8 && !selectedSomethin)
         FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 
@@ -520,7 +530,7 @@ function update(elapsed:Float) {
 					switch (choice) {
 						case "Options":
 							new FlxTimer().start(0.4, function(tmr:FlxTimer) {
-                                FlxG.switchState(new ModSubState('MMMOptions'));
+                                FlxG.switchState(new OptionsMenu());
                             });
 						case "Credits":
 							FlxG.switchState(new ModState("MMCredits"));

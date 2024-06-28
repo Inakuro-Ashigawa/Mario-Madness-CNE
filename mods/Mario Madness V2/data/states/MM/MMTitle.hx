@@ -7,7 +7,7 @@ FlxG.resizeGame(960, 720);
 FlxG.scaleMode.width = 960;
 FlxG.scaleMode.height = 720;
 window.resizable = false;
-window.x = 500;
+window.x = 200;
 window.title = "Friday Night Funkin': Mario's Madness";
 
 FlxG.camera.zoom = 1.1;
@@ -124,7 +124,7 @@ function enterPressed(){
     });
 
     new FlxTimer().start(3, function(tmr:FlxTimer){
-        FlxTween.tween(window, {x: 325, width: resizex, height: resizey}, 2, {ease: FlxEase.cubeInOut}).onComplete = function(){
+        FlxTween.tween(window, {width: resizex, height: resizey}, 2, {ease: FlxEase.cubeInOut}).onComplete = function(){
             FlxG.resizeWindow(resizex, resizey);
             FlxG.resizeGame(resizex, resizey);
             FlxG.scaleMode.width = resizex;
