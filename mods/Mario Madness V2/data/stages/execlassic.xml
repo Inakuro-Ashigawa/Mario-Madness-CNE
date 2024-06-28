@@ -1,0 +1,28 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/MushroomKingdom/iam/" zoom="0.5">
+	<sprite x="-1000" scrolly="0.45" sprite="Castillo fondo de hasta atras" y="-850" name="Castillo fondo de hasta atras" scrollx="0.45"/>
+	<sprite x="-1400" scrolly="0.4" sprite="Starman_BG_Fire_Assets" y="500" name="fireL" scrollx="0.4">
+		
+		
+		<anim loop="true" x="0" anim="fire anim effects" fps="24" y="0" type="loop" name="idle"/>
+		
+	
+	</sprite>
+	<sprite x="700" scrolly="0.4" sprite="Starman_BG_Fire_Assets" y="500" name="fireR" scrollx="0.4">
+		
+		
+		<anim loop="true" x="0" anim="fire anim effects" fps="24" y="0" type="loop" name="idle" indices="8, 9, 10, 11, 12, 13, 14, 15, 0, 1, 2, 3, 4, 5, 6, 7"/>
+		
+		
+		<property type="bool" name="flipX" value="true"/>
+		
+	
+	</sprite>
+	<sprite x="-1000" name="Suelo y brillo atmosferico" sprite="Suelo y brillo atmosferico" y="-850"/>
+	<sprite x="-1000" name="Arboles y sombra" sprite="Arboles y sombra" y="-850"/>
+	<gf x="970" y="80"/>
+	<dad x="60" y="50"/>
+	<bf x="1100" y="120"/>
+	<combo/>
+	<sprite x="-1000" name="CLadrillosPapus" sprite="CLadrillosPapus" y="-850"/>
+</stage>
