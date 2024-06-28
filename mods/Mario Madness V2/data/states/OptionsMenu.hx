@@ -3,6 +3,8 @@ import flixel.effects.FlxFlicker;
 
 var staticShader, ntsc:CustomShader = null;
 
+//this is Syurps code!!
+
 function postCreate(){
     FlxTween.tween(Framerate.offset, {y: pathBG.height + 5}, .75, {ease: FlxEase.elasticOut});
 
