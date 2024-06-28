@@ -24,15 +24,15 @@ var sicks:Int = 0;
 var goods:Int = 0;
 var bads:Int = 0;
 var shits:Int = 0;
-var timeBarBG:FlxSprite;
-var timeBar:FlxBar;
-var timeTxt:FlxText; // I forgot why I made these variables.......
-var hudTxt:FlxText;
+public var timeBarBG:FlxSprite;
+public var timeBar:FlxBar;
+public var timeTxt:FlxText; 
+public var hudTxt:FlxText;
 var hudTxtTween:FlxTween;
-var healthOverlay:FlxSprite;
+public var healthOverlay:FlxSprite;
 var ratingFC:String = "FC";
-var botplayTxt:FlxText;
-var botplaySine:Float = 0;
+public var botplayTxt:FlxText;
+public var botplaySine:Float = 0;
 var ratingStuff:Array<Dynamic> = [
     ['F', 0.2],
     ['E', 0.4],
@@ -164,14 +164,14 @@ function postCreate() {
 
     healthOverlay = new FlxSprite(healthBarBG.x - 41, healthBarBG.y - 17).loadGraphic(Paths.image("game/hud/Mario Madness/healthBarBG"));
     healthOverlay.cameras = [camHUD];
-    insert(members.indexOf(iconP1), healthOverlay);
+    insert(members.indexOf(icoP2), healthOverlay);
     healthBarBG.visible = false;
 
     for (i in [missesTxt, accuracyTxt, scoreTxt]) i.visible = false;
 
     if (downscroll) hudTxt.y = healthBarBG.y - 58;
 
-    add(hudTxt);
+    insert(members.indexOf(icoP1), hudTxt);
 
     healthBar.y = FlxG.height * 0.89;
     healthBarBG.y = healthBar.y - 4;
@@ -185,6 +185,7 @@ function postCreate() {
     
     if (FlxG.save.data.showTxt) hudTxt.visible = false;
 }
+
 function onNoteCreation(event) {
     event.noteSprite = 'game/notes/Mario Madness/Mariodefault';
 }

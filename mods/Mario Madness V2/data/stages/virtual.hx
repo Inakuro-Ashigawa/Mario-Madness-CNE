@@ -43,7 +43,9 @@ if (FlxG.save.data.virtualWindow){
 camGame.visible = camHUD.visible = false;
 
 function create(){
+    
     player.cpu = true;
+
     yourhead = new FlxBackdrop(Paths.image('stages/HellishHights/virtual/headbg'), -400, -200, 1, 1);
     yourhead.setGraphicSize(Std.int(yourhead.width * 2));
     yourhead.alpha = 0.2;
@@ -73,7 +75,7 @@ function create(){
     dupe = new CustomShader("camDupe");
     dupe.multi = 1;
     dupe.mirrorS = false;
-    if (FlxG.save.data.virtualShaders) camGame.addShader(dupe); camHUD.addShader(dupe);
+    if (FlxG.save.data.virtualShaders) camGame.addShader(dupe);
 
     angel = new CustomShader("angel");
     angel.data.pixel.value = [1, 1];
@@ -142,13 +144,20 @@ function onStrumCreation(event) {
 
 function onPostNoteCreation(event) {  
     var note = event.note;
-    if (FlxG.save.data.Splashes) note.splash = "redDiamond";
-    else if (FlxG.save.data.Splashes == 0) note.splash = "redVanilla";
-    else return;
+    if (FlxG.save.data.Splashes == "splashDiamond")
+        note.splash = "diamond-paranoia";
+    if (FlxG.save.data.Splashes == "splashPsych")
+        note.splash = "vanilla-paranoia";
+    if (FlxG.save.data.Splashes == "splashSecret")
+        note.splash = "secret-paranoia";
+    if (FlxG.save.data.Splashes == "splashCne")
+        note.splash = "default-paranoia";
 
     // fixes sustain note's x offset
-    if (note.isSustainNote)  note.frameOffset.x -= note.frameWidth / 4; 
+    if (note.isSustainNote)
+        note.frameOffset.x -= note.frameWidth / 4; 
 }
+
 
 function onPlayerHit(event:NoteHitEvent) event.ratingPrefix = "game/score/paranoia/"; // this sucks but coloring the rating stuff with coding didnt work sooo
 
