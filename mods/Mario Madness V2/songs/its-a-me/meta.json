@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 160,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -983040,
+	"displayName": "IT'S A ME",
+	"icon": "mario",
+	"name": "its-a-me",
+	"color": "#F10000"
+}
