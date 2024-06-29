@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character isPlayer="true" flipX="false" holdTime="4" y="-40" icon="marioP" sprite="Woodland-of-Lies\ogn\Mario_OHGODNO_Assets" camX="-30" camY="-60"> <!-- CONVERTED VIA psychjsontocodenamexml.py by Burgerballs -->
+
+   <anim name="idle" anim="MarioIdle" loop="false" x="0" y="0"/>
+   <anim name="singDOWN" anim="MarioDown0" fps="30" loop="false" x="0" y="-50"/>
+   <anim name="singDOWNmiss" anim="MarioDownMiss" fps="30" loop="false" x="0" y="-22"/>
+   <anim name="singUPmiss" anim="MarioUpMiss" fps="30" loop="false" x="44" y="47"/>
+   <anim name="singLEFTmiss" anim="MarioLeftMiss" fps="30" loop="false" x="73" y="8"/>
+   <anim name="singRIGHTmiss" anim="MarioRightMiss" fps="30" loop="false" x="-20" y="6"/>
+   <anim name="singRIGHT" anim="MarioRight0" fps="30" loop="false" x="-19" y="5" indices="0,1,2,3,4,5,6,7,8,9,10,11"/>
+   <anim name="singUP" anim="MarioUp0" fps="30" loop="false" x="56" y="44" indices="0,1,2,3,4,5,6,7,8,9,10,11"/>
+   <anim name="singLEFT" anim="MarioLeft0" fps="30" loop="false" x="115" y="-2" indices="0,1,2,3,4,5,6,7,8,9,10,11"/>
+
+</character>

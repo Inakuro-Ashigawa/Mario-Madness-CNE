@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character isPlayer="false" isGF="true" flipX="false" holdTime="4" x="160" y="-150" icon="peach" sprite="Woodland-of-Lies\ogn\Peach_OGN_Assets"> <!-- CONVERTED VIA psychjsontocodenamexml.py by Burgerballs -->
+
+   <anim name="idle" anim="PeachSad" loop="true" x="0" y="0"/>
+
+</character>

@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 143,
+	"difficulties": [
+		"NORMAL"
+	],
+	"needsVoices": true,
+	"parsedColor": -15747072,
+	"displayName": "Oh God No",
+	"icon": "luigiP",
+	"name": "Oh God No",
+	"color": "#0FB800"
+}
