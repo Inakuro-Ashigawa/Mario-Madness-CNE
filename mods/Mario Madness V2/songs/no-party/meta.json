@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 125,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -14915916,
+	"displayName": "No Party",
+	"icon": "Icon",
+	"name": "no-party",
+	"color": "#1C66B4"
+}

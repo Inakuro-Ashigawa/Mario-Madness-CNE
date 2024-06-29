@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 114,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -63994,
+	"displayName": "Day Out",
+	"icon": "mario-ldo",
+	"name": "day-out",
+	"color": "#FF0606"
+}

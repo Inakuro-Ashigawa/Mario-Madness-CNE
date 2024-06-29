@@ -1,0 +1,16 @@
+<!DOCTYPE codename-engine-character>
+<character x="50" icon="BF_Goomba" camx="-300" y="430" isGF="false" scale="1.1" camy="-200" color="#31B3D1" flipX="true" isPlayer="true" gameOverChar="BF_Goomba" sprite="Woodland-of-Lies/tumoil/BF_Goomba">
+	<anim x="2" loop="false" y="0" fps="24" anim="goombf idle" name="idle"/>
+	<anim x="-21" loop="false" y="52" fps="24" anim="goombf up0" name="singUP"/>
+	<anim x="-21" loop="false" y="15" fps="24" anim="goombf right0" name="singRIGHT"/>
+	<anim x="49" loop="false" y="12" fps="24" anim="goombf left0" name="singLEFT"/>
+	<anim x="12" loop="false" y="-28" fps="24" anim="goombf down0" name="singDOWN"/>
+	<anim x="-12" loop="false" y="47" fps="24" anim="goombf miss up" name="singUPmiss"/>
+	<anim x="37" loop="false" y="48" fps="24" anim="goombf miss left" name="singLEFTmiss"/>
+	<anim x="-21" loop="false" y="42" fps="24" anim="goombf miss right" name="singRIGHTmiss"/>
+	<anim x="13" loop="false" y="12" fps="24" anim="goombf miss down" name="singDOWNmiss"/>
+	<anim x="-15" loop="false" y="28" fps="24" anim="goombf dodge" name="dodge"/>
+	<anim x="28" loop="false" y="180" fps="24" anim="goombf dead animation" name="firstDeath"/>
+	<anim x="440" loop="false" y="170" fps="24" anim="goombf dead confirm" name="deathConfirm"/>
+	<anim x="440" loop="true" y="170" fps="24" anim="goombf dead loop" name="deathLoop"/>
+</character>

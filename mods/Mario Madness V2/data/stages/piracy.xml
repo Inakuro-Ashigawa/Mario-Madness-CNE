@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/MushroomKingdom/exesequel/" zoom="2">
+	<dad x="0" y="-300"/>
+	<bf x="100" y="-200"/>
+	<combo/>
+</stage>

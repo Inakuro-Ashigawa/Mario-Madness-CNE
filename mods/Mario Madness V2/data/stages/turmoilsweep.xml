@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="1.2" folder="stages/Woodland-of-Lies/course" startCamPosX="2000" startCamPosY="1000">
+
+    <sprite name="tree3" x="-1300" y="-750" sprite="ThirdBGTrees" scroll='0.5'/>
+    <sprite name="tree2" x="-1300" y="-750" sprite="SecondBGTrees" scroll='0.8'/>
+    <sprite name="floorNtrees1" x="-1300" y="-750" sprite="MainFloorAndTrees" scroll='1'/>
+
+	<boyfriend x="870" y = "120"/>
+    <dad x = "-100" y = "130" />
+</stage>

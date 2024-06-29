@@ -12,6 +12,12 @@ var pixelTween:NumTween;
 public var timer:Float = .75;
 public var gfCamX:Float = 750;
 
+public var size:Float = 3248;
+public var startX:Float = -800;
+public var startY:Float = -660;
+public var duration:Float = 3;
+
+
 public var dadZoom:Float = .5;
 public var bfZoom:Float = .8;
 
@@ -43,8 +49,17 @@ if (FlxG.save.data.virtualWindow){
 camGame.visible = camHUD.visible = false;
 
 function create(){
+
+    late1 = new FlxSprite(startX, startY).loadGraphic(Paths.image("stages/HellishHights/virtual/TooLate"));
+    late1.scale.set(1.7, 1.7);
+    insert(0, late1);
+
+    late2 = new FlxSprite(startX + size, startY).loadGraphic(Paths.image("stages/HellishHights/virtual/TooLate"));
+    late2.scale.set(1.7, 1.7);
+    insert(1, late2);
     
-    player.cpu = true;
+    late1.visible = late2.visible = false;
+    scrollA();
 
     yourhead = new FlxBackdrop(Paths.image('stages/HellishHights/virtual/headbg'), -400, -200, 1, 1);
     yourhead.setGraphicSize(Std.int(yourhead.width * 2));
@@ -256,7 +271,12 @@ function noMoreFullscreen(){
     canPause = true;
     for (i in [hudTxt, timeTxt, timeBar, timeBarBG]) i.visible = true;
     FlxTween.tween(window, {x: winX, y: winY, width: resizex, height: resizey}, 1, {ease: FlxEase.expoOut});
+    if (!FlxG.save.data.virtualBetter){
     crazyFloor.visible = false;
+    }
+    else if (FlxG.save.data.virtualBetter){
+    for (i in [crazyFloor, late1, late2]) i.visible = false;
+    }
     yourhead.visible = true;
     dadZoom = bfZoom = .85;
     FlxG.camera.followLerp = 0.04;
@@ -275,7 +295,7 @@ function preGfWindow(){
                 window.borderless = false;
                 hideTaskbar();
                 if (FlxG.save.data.virtualApps) prevHidden = hideWindows(window.title);
-                if (FlxG.save.data.virtualWallpaper){
+                if (FlxG.save.data.virtualWallpaper && !FlxG.save.data.virtualBetter){
                     setWallpaper(realPath);
                     trace(realPath);
                 }
@@ -303,7 +323,12 @@ function stopDupe(){
 }
 
 function gf(){
-    for (i in [camGame, camHUD, crazyFloor]) i.visible = true;
+    if (!FlxG.save.data.virtualBetter){
+        for (i in [camGame, camHUD, crazyFloor]) i.visible = true;
+    }
+    else
+    for (i in [camGame, camHUD, crazyFloor, late1, late2]) i.visible = true;
+
     for (i in [hudTxt, timeTxt, timeBar, timeBarBG]) i.visible = false;
     for (e in [vwall, backPipes, backFloor, turtle, turtle2, frontPipes, frontFloor, cornerPipes, gfwasTaken]){
         remove(e, true);
@@ -319,7 +344,7 @@ function gf(){
     cameraMovementEnabled = false;
     canPause = false;
     if (FlxG.save.data.virtualTrans) setTransparent(true, 0, 1, 1);
-    if (FlxG.save.data.virtualWallpaper) setWallpaper(realPath); // being run again to prevent black background
+    if (FlxG.save.data.virtualWallpaper && !FlxG.save.data.virtualBetter) setWallpaper(realPath); // being run again to prevent black background
 }
 
 function destroy(){
@@ -328,4 +353,18 @@ function destroy(){
     setWallpaper(prevWallpaper);
     showWindows(prevHidden);
     window.resizable = true;
+}
+function scrollA(){
+    FlxTween.tween(late2, {x:  startX}, duration, {onComplete: function(twn:FlxTween)
+    {
+        scrollB();
+    }});
+    FlxTween.tween(late1, {x:  startX - size}, duration);
+}
+function scrollB(){
+    FlxTween.tween(late2, {x:  startX + size }, 0.001, {onComplete: function(twn:FlxTween)
+        {
+            scrollA();
+        }});
+    FlxTween.tween(late1, {x:  startX }, 0.001);
 }

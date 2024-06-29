@@ -515,7 +515,7 @@ function update(elapsed:Float) {
 						case "WarpZone":
 							new FlxTimer().start(0.4, function(tmr:FlxTimer)
 							{
-                                FlxG.switchState(new ModState("WarpState"));
+                                FlxG.switchState(new ModState("extras/PartyState"));
 							});
                         /*
                         dont even think about it- inakuro
