@@ -2,7 +2,15 @@
 import flixel.tweens.FlxTween.FlxTweenType;
 
 function create(){
-defaultCamZoom = 0.1;
+boyfriend.x = 92;
+boyfriend.y = 127;
+
+dad.x = -1315.5;
+dad.y = 432.5;
+
+gf.x = 413;
+gf.y = 153;
+
     //act 3
 
     Pipe = new FlxSprite().loadGraphic(Paths.image("stages/MushroomKingdom/allfinal/act3/Act3_bfpipe"));
@@ -26,6 +34,11 @@ defaultCamZoom = 0.1;
     insert(1, Marvin);
     Marvin.scale.x = 1.3;
     Marvin.scale.y = 1.3;
+
+    MarvinHand = new FlxSprite().loadGraphic(Paths.image("stages/MushroomKingdom/allfinal/act3/Act3_Ultra_Arm"));
+    insert(1, MarvinHand);
+    MarvinHand.y = 610;
+    MarvinHand.x = -100;
 }
 
 
