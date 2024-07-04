@@ -1,4 +1,7 @@
 import flixel.addons.display.FlxBackdrop;
+import flixel.text.FlxText.FlxTextAlign;
+import flixel.text.FlxText.FlxTextBorderStyle;
+import flixel.text.FlxText.FlxTextFormat;
 import sys.FileSystem;
 
 var realPath = StringTools.replace(FileSystem.absolutePath(Assets.getPath("assets/images/stages/HellishHights/virtual/toolate.bmp")), "/", "\\");
@@ -34,6 +37,13 @@ var dupeMax:Int = 4;
 var inc:Bool = true;
 
 var angel:CustomShader = null;
+
+public var camSong:FlxCamera;
+public var titleText:FlxText;
+public var autorText:FlxText;
+public var line1:FlxSprite;
+public var line2:FlxSprite;
+
 
 if (FlxG.save.data.virtualWindow){
     window.x = winX;
@@ -90,11 +100,69 @@ function create(){
     dupe = new CustomShader("camDupe");
     dupe.multi = 1;
     dupe.mirrorS = false;
-    if (FlxG.save.data.virtualShaders) camGame.addShader(dupe);
+    if (FlxG.save.data.virtualShaders) camGame.addShader(dupe); camHUD.addShader(dupe); 
 
     angel = new CustomShader("angel");
     angel.data.pixel.value = [1, 1];
     angel.data.stronk.value = [1, 1];
+
+    camSong = new FlxCamera();
+    camSong.bgColor = 0x00000000;
+    FlxG.cameras.add(camSong, false);
+    
+    titleText = new FlxText(400, 304.5, 0, "Paranoia (Act 2)", 42);
+    titleText.setFormat(Paths.font("mariones.ttf"), 42, FlxColor.BLACK, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, 0xFFF42626);
+    titleText.borderSize = 3;
+    titleText.screenCenter(FlxAxes.X);
+
+    var format = new FlxTextFormat(0x000000, false, false, 0xFFF42626);
+    format.leading = -5;
+
+    autorText = new FlxText(400, titleText.y + 70, 0, "Ported by Inakuro", 35);
+    autorText.setFormat(Paths.font("mariones.ttf"), 35, FlxColor.BLACK, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, 0xFFF42626);
+    autorText.borderSize += 2;
+    autorText.screenCenter(FlxAxes.X);
+    autorText.addFormat(format);
+
+    var checkwidth:Float = autorText.width;
+    if (titleText.width >= autorText.width)
+        checkwidth = titleText.width;
+
+    line2 = new FlxSprite(566, titleText.y + 57).makeGraphic(Std.int(checkwidth), 5, FlxColor.BLACK);
+    line2.screenCenter(FlxAxes.X);
+
+    line1 = new FlxSprite(line2.x - 5, line2.y - 2).makeGraphic(Std.int(checkwidth + 10), 8, 0xFFF42626);
+
+    for (i in [titleText, autorText, line1, line2]) {
+        i.cameras = [camSong];
+        i.alpha = 0;
+        add(i);
+    }
+}
+
+
+function showSongNameAct2() {
+    titleText.text = "Paranoia (Act 2)";
+    autorText.text = "Ported by Inakuro";
+
+    titleText.y = 304.5;
+    autorText.y = titleText.y + 70;
+    line2.y = titleText.y + 57;
+    line1.y = line2.y - 2;
+    
+    autorText.screenCenter(FlxAxes.X);
+    titleText.screenCenter(FlxAxes.X);
+    
+    FlxTween.tween(titleText, {alpha: 1, y: titleText.y + 30}, 0.5, {ease: FlxEase.cubeOut});
+    FlxTween.tween(autorText, {alpha: 1, y: autorText.y + 30}, 0.5, {ease: FlxEase.cubeOut});
+    FlxTween.tween(line1, {alpha: 1, y: 	line1.y 	+ 30}, 0.5, {ease: FlxEase.cubeOut});
+    FlxTween.tween(line2, {alpha: 1, y: 	line2.y 	+ 30}, 0.5, {ease: FlxEase.cubeOut});
+}
+function hideSongName() {
+    FlxTween.tween(titleText, {alpha: 0}, 0.5, {ease: FlxEase.cubeOut});
+    FlxTween.tween(autorText, {alpha: 0}, 0.5, {ease: FlxEase.cubeOut});
+    FlxTween.tween(line1, {alpha: 0}, 0.5, {ease: FlxEase.cubeOut});
+    FlxTween.tween(line2, {alpha: 0}, 0.5, {ease: FlxEase.cubeOut});
 }
 
 function update(elapsed:Float){
@@ -272,7 +340,7 @@ function noMoreFullscreen(){
     for (i in [hudTxt, timeTxt, timeBar, timeBarBG]) i.visible = true;
     FlxTween.tween(window, {x: winX, y: winY, width: resizex, height: resizey}, 1, {ease: FlxEase.expoOut});
     if (!FlxG.save.data.virtualBetter){
-    crazyFloor.visible = false;
+        crazyFloor.visible = false;
     }
     else if (FlxG.save.data.virtualBetter){
     for (i in [crazyFloor, late1, late2]) i.visible = false;
@@ -345,6 +413,13 @@ function gf(){
     canPause = false;
     if (FlxG.save.data.virtualTrans) setTransparent(true, 0, 1, 1);
     if (FlxG.save.data.virtualWallpaper && !FlxG.save.data.virtualBetter) setWallpaper(realPath); // being run again to prevent black background
+    if (FlxG.save.data.virtualBetter){
+        showSongNameAct2();
+        new FlxTimer().start(7, function(tmr:FlxTimer){
+            hideSongName();
+        });
+        
+    }
 }
 
 function destroy(){
@@ -362,9 +437,9 @@ function scrollA(){
     FlxTween.tween(late1, {x:  startX - size}, duration);
 }
 function scrollB(){
-    FlxTween.tween(late2, {x:  startX + size }, 0.001, {onComplete: function(twn:FlxTween)
-        {
-            scrollA();
-        }});
-    FlxTween.tween(late1, {x:  startX }, 0.001);
+    FlxTween.tween(late2, {x:  startX + size }, 0.0000000000001, {onComplete: function(twn:FlxTween)
+    {   
+        scrollA();      
+    }});
+    FlxTween.tween(late1, {x:  startX }, 0.0000000000001);
 }

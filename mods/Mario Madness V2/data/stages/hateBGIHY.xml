@@ -1,0 +1,7 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/" >
+	<dad x="-200" y="80"/>
+	<bf x="870" y="60"/>
+	<gf x="250" y="100"/>	
+	<combo/>
+</stage>

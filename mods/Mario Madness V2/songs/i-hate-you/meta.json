@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 168,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -12845312,
+	"displayName": "I Hate You",
+	"icon": "luigiH2",
+	"name": "i-hate-you",
+	"color": "#3BFF00"
+}

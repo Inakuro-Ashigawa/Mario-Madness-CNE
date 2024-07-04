@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" sprite="MushroomKingdom/all stars/MM_Boyfriend_Assets_cryingfuck" flipX="true" isPlayer="true" icon="bfsad">
+	<anim name="idle" anim="SCAREDIDLE" x="-4" y="30" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="SCAREDLEFT" x="-10" y="31" fps="24" loop="false"/>
+	<anim name="singUP" anim="SCAREDUP" x="-25" y="92" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="SCAREDRIGHT" x="-41" y="31" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="MISSSCAREDLEFT" x="0" y="53" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="MISSSCAREDDOWN" x="-28" y="-3" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="MISSSCAREDUP" x="-23" y="120" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="MISSSCAREDRIGHT" x="-43" y="61" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="SCAREDDOWN" x="-31" y="-6" fps="24" loop="false"/>
+	<anim name="cut" anim="Act3Intro" x="-16" y="75" fps="20" loop="false"/>
+</character>

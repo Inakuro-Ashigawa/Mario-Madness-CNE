@@ -1,85 +1,138 @@
-#pragma header
+ #pragma header
 
-  uniform float time;
+    uniform float iTime;
+    uniform bool vignetteOn;
+    uniform bool perspectiveOn;
+    uniform bool distortionOn;
+    uniform bool vignetteMoving;
+    uniform sampler2D noiseTex;
+    uniform float glitchModifier;
+    uniform vec3 iResolution;
 
-  // mostly stolen from https://www.shadertoy.com/view/ldXGW4
+    float onOff(float a, float b, float c)
+    {
+    	return step(c, sin(iTime + a*cos(iTime*b)));
+    }
 
-  // Noise generation functions borrowed from: 
-  // https://github.com/ashima/webgl-noise/blob/master/src/noise2D.glsl
+    float ramp(float y, float start, float end)
+    {
+    	float inside = step(start,y) - step(end,y);
+    	float fact = (y-start)/(end-start)*inside;
+    	return (1.-fact) * inside;
 
-  vec3 mod289(vec3 x) {
-      return x - floor(x * (1.0 / 289.0)) * 289.0;
-  }
+    }
 
-  vec2 mod289(vec2 x) {
-      return x - floor(x * (1.0 / 289.0)) * 289.0;
-  }
+    vec2 distortUV(vec2 look){
+      if(distortionOn){
+        float window = 1./(1.+20.*(look.y-mod(iTime/4.,1.))*(look.y-mod(iTime/4.,1.)));
+        look.x = look.x + (sin(look.y*10. + iTime)/50.*onOff(4.,4.,.3)*(1.+cos(iTime*80.))*window)*(glitchModifier*2.);
+        float vShift = 0.4*onOff(2.,3.,.9)*(sin(iTime)*sin(iTime*20.) +
+                           (0.5 + 0.1*sin(iTime*200.)*cos(iTime)));
 
-  vec3 permute(vec3 x) {
-      return mod289(((x*34.0)+1.0)*x);
-  }
+        float cum = mod(look.y + (vShift*glitchModifier), 1.);
+        if(abs(vShift*glitchModifier) > 0.01){
+          look.y = cum;
+        }
+      }
+      return look;
+    }
+    vec4 getVideo(vec2 uv)
+      {
+      	vec2 look = uv;
+      	vec4 video = flixel_texture2D(bitmap,look);
 
-  float snoise(vec2 v)
-  {
-      const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
-                          0.366025403784439,  // 0.5*(sqrt(3.0)-1.0)
-                          -0.577350269189626,  // -1.0 + 2.0 * C.x
-                          0.024390243902439); // 1.0 / 41.0
-      // First corner
-      vec2 i  = floor(v + dot(v, C.yy) );
-      vec2 x0 = v -   i + dot(i, C.xx);
+      	return video;
+      }
 
-      // Other corners
-      vec2 i1;
-      //i1.x = step( x0.y, x0.x ); // x0.x > x0.y ? 1.0 : 0.0
-      //i1.y = 1.0 - i1.x;
-      i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-      // x0 = x0 - 0.0 + 0.0 * C.xx ;
-      // x1 = x0 - i1 + 1.0 * C.xx ;
-      // x2 = x0 - 1.0 + 2.0 * C.xx ;
-      vec4 x12 = x0.xyxy + C.xxzz;
-      x12.xy -= i1;
+    vec2 screenDistort(vec2 uv)
+    {
+      if(perspectiveOn){
+        uv = (uv - 0.5) * 2.0;
+      	uv *= 1.1;
+      	uv.x *= 1.0 + pow((abs(uv.y) / 5.0), 2.0);
+      	uv.y *= 1.0 + pow((abs(uv.x) / 4.0), 2.0);
+      	uv  = (uv / 2.0) + 0.5;
+      	uv =  uv *0.92 + 0.04;
+      	return uv;
+      }
+    	return uv;
+    }
+    float random(vec2 uv)
+    {
+     	return fract(sin(dot(uv, vec2(15.5151, 42.2561))) * 12341.14122 * sin(iTime * 0.03));
+    }
 
-      // Permutations
-      i = mod289(i); // Avoid truncation effects in permutation
-      vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
-              + i.x + vec3(0.0, i1.x, 1.0 ));
+    float rand(vec2 co){
+      return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+    }
 
-      vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
-      m = m*m ;
-      m = m*m ;
 
-      // Gradients: 41 points uniformly over a line, mapped onto a diamond.
-      // The ring size 17*17 = 289 is close to a multiple of 41 (41*7 = 287)
 
-      vec3 x = 2.0 * fract(p * C.www) - 1.0;
-      vec3 h = abs(x) - 0.5;
-      vec3 ox = floor(x + 0.5);
-      vec3 a0 = x - ox;
+    float noise(vec2 uv)
+    {
+     	vec2 i = floor(uv);
+        vec2 f = fract(uv);
 
-      // Normalise gradients implicitly by scaling m
-      // Approximation of: m *= inversesqrt( a0*a0 + h*h );
-      m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+        float a = random(i);
+        float b = random(i + vec2(1.,0.));
+    	float c = random(i + vec2(0., 1.));
+        float d = random(i + vec2(1.));
 
-      // Compute final noise value at P
-      vec3 g;
-      g.x  = a0.x  * x0.x  + h.x  * x0.y;
-      g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-      return 130.0 * dot(m, g);
-  }
+        vec2 u = smoothstep(0., 1., f);
 
-  void main() {
-      float fuzzOffset = snoise(vec2(time*15.0,openfl_TextureCoordv.y*80.0))*0.0005;
-    float largeFuzzOffset = snoise(vec2(time*1.0,openfl_TextureCoordv.y*25.0))*0.001;
-      float xOffset = (fuzzOffset + largeFuzzOffset);
+        return mix(a,b, u.x) + (c - a) * u.y * (1. - u.x) + (d - b) * u.x * u.y;
 
-      float red =  texture(bitmap, vec2(openfl_TextureCoordv.x + xOffset - 0.003, openfl_TextureCoordv.y)).r;
-    float green = texture(bitmap, vec2(openfl_TextureCoordv.x + xOffset, openfl_TextureCoordv.y)).g;
-    float blue = texture(bitmap, vec2(openfl_TextureCoordv.x + xOffset + 0.003, openfl_TextureCoordv.y)).b;
-      float alpha = texture(bitmap, vec2(openfl_TextureCoordv.x + xOffset, openfl_TextureCoordv.y)).a;
+    }
 
-      vec3 color = vec3(red, green, blue);
-      float scanline = sin(openfl_TextureCoordv.y*800.0)*0.04;
-      color -= scanline;
-      gl_FragColor = vec4(color, alpha);
-  } 
+
+    vec2 scandistort(vec2 uv) {
+    	float scan1 = clamp(cos(uv.y * 2.0 + iTime), 0.0, 1.0);
+    	float scan2 = clamp(cos(uv.y * 2.0 + iTime + 4.0) * 10.0, 0.0, 1.0) ;
+    	float amount = scan1 * scan2 * uv.x;
+
+    	uv.x -= 0.05 * mix(flixel_texture2D(noiseTex, vec2(uv.x, amount)).r * amount, amount, 0.9);
+
+    	return uv;
+
+    }
+    void main()
+    {
+    	vec2 uv = openfl_TextureCoordv;
+      vec2 tvWow = screenDistort(uv);
+      if(distortionOn){
+        uv.x += rand(vec2(0, (uv.y/125.0) + iTime))/256.;
+        uv.y += rand(vec2(0, (uv.x/125.0) + iTime))/256.;
+      }
+      vec2 curUV = screenDistort(distortUV(uv));
+    	uv = scandistort(curUV);
+    	vec4 video = getVideo(uv);
+      float vigAmt = 1.0;
+      float x =  0.;
+
+
+      video.r = getVideo(vec2(x+uv.x+0.001,uv.y+0.001)- vec2(0.005,0.004)).x+0.05;
+      video.g = getVideo(vec2(x+uv.x+0.000,uv.y-0.002)).y+0.05;
+      video.b = getVideo(vec2(x+uv.x-0.002,uv.y+0.000)+ vec2(0.005,0.004)).z+0.05;
+      video.r += 0.08*getVideo(0.75*vec2(x+0.025, -0.027)+vec2(uv.x+0.001,uv.y+0.001)).x;
+      video.g += 0.05*getVideo(0.75*vec2(x+-0.022, -0.02)+vec2(uv.x+0.000,uv.y-0.002)).y;
+      video.b += 0.08*getVideo(0.75*vec2(x+-0.02, -0.018)+vec2(uv.x-0.002,uv.y+0.000)).z;
+
+      video = clamp(video*0.6+0.4*video*video*1.0,0.0,1.0);
+
+
+      if(vignetteMoving)
+    	  vigAmt = 3.+.3*sin(iTime + 5.*cos(iTime*5.));
+
+    	float vignette = (1.-vigAmt*(uv.y-.5)*(uv.y-.5))*(1.-vigAmt*(uv.x-.5)*(uv.x-.5));
+
+      if(vignetteOn)
+    	 video *= vignette;
+
+
+      gl_FragColor = video;
+
+      if(tvWow.x<0. || tvWow.x>1. || tvWow.y<0. || tvWow.y>1.){
+        gl_FragColor = vec4(0,0,0,0);
+      }
+
+    }

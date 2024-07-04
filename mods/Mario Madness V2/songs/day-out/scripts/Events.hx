@@ -1,15 +1,15 @@
 
 function stepHit(){
     if (curStep == 26){
-       dad.playAnim("mom");
+       dad.playAnim("gonnatell");
     }
     if (curStep == 52){
        defaultCamZoom = 0.8;
-       strumLines.members[2].characters[0].playAnim("snitch");
+       gf.playAnim("notgonna");
        FlxTween.tween(camGame, {zoom: 1.3}, 2,  {ease: FlxEase.cubeInOut});
     }
     if (curStep == 68){
-       dad.playAnim("not");
+       dad.playAnim("betternot");
     }
     if (curStep == 110){
        boyfriend.alpha = 1;
@@ -17,7 +17,7 @@ function stepHit(){
        FlxTween.tween(camGame, {zoom: .7}, 5,  {ease: FlxEase.cubeInOut});
     }
     if (curStep == 120){
-        dad.playAnim("hi");
+        dad.playAnim("hey");
         camHUD.alpha = 1;
         iconP2.alpha = 1;
         iconP1.alpha = 1;

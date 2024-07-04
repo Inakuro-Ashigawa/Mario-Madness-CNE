@@ -1,8 +1,17 @@
-import BGSprite;
+var cancelCameraMove:Bool = false;
+
+function onCameraMove(e) if(cancelCameraMove) e.cancel();
+
 
 function create(){
-    dad.playAnim("smoke");
+    dad.playAnim("smoke hold");
     dad.animation.curAnim.pause();
+
+    boyfriend.cameraOffset.x = 320;
+    boyfriend.cameraOffset.y = 450;
+
+    dad.cameraOffset.x = 620;
+    dad.cameraOffset.y = 450;
 
     sky = new FlxSprite(-200, -1000).loadGraphic(Paths.image('stages/ContentCosmos/cityout/skyL'));
     sky.scrollFactor.set(0.7, 0.8);
@@ -12,7 +21,7 @@ function create(){
     citybg.scrollFactor.set(0.7, 0.8);
     insert(1, citybg);
 
-    cityplus = new FlxSprite(600, 100).loadGraphic(Paths.image('stages/ContentCosmos/cityout/road plus building'));
+    cityplus = new FlxSprite(600, -500).loadGraphic(Paths.image('stages/ContentCosmos/cityout/road plus building'));
     cityplus.scrollFactor.set(0.8, 1);
     insert(2, cityplus);
 
@@ -64,12 +73,14 @@ function create(){
     lightWall.scrollFactor.set(1.2,1.2);
 }
 function walk(){
-    //FlxTween.tween(camFollowPos, {x: DAD_CAM_X, y: DAD_CAM_Y}, 1.5, {ease: FlxEase.quadOut}));
+    cancelCameraMove = true;
+    FlxTween.tween(camFollow, {x: 620, y: 450}, 1.5, {ease: FlxEase.quadOut});
+    FlxTween.tween(camHUD, {alpha: 0.00001}, 1.5, {ease: FlxEase.quadOut});
+
     mrwalk.alpha = 1;
     dad.visible = false;
 
     gfwalk.alpha = 1;
-    gflol.visible = false;
 
     bfwalk.alpha = 1;
     boyfriend.visible = false;
