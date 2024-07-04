@@ -30,7 +30,7 @@ gf.y = 153;
     MarvinHead.scale.set(1.1, 1.1);
     
     Marvin = new FunkinSprite(0,0, Paths.image("stages/MushroomKingdom/allfinal/act3/Act3_Ultra_M"));
-    XMLUtil.addAnimToSprite(Marvin, {name: "torso idle 1", anim: "torso idle 1", fps: 24, animType: "none", indices: [], x: 1030, y: 0, forced: false});
+    XMLUtil.addAnimToSprite(Marvin, {name: "torso idle 1", anim: "torso idle 1", fps: 24, animType: "none", indices: [], x: 1030, y: 0, forced: true});
     insert(1, Marvin);
     Marvin.scale.x = 1.3;
     Marvin.scale.y = 1.3;
@@ -101,6 +101,7 @@ function beatHit(){
             (FlxTween.tween(MarvinEyes, {y: 0}, 0.4, {ease: FlxEase.quadInOut}));
         }
     }));
+    Marvin.playAnim("torso idle 1", true);  
 }
 }
 
