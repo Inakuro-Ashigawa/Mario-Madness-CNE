@@ -51,8 +51,18 @@ function stepHit() {
             FlxTween.tween(gf, {alpha:0}, 0.4, {ease: FlxEase.linear});
 
         case 2240:
+            //RESET
+
+            boyfriend.x = 92;
+            boyfriend.y = 127;
+
+            dad.x = -1315.5;
+            dad.y = 432.5;
+
             boyfriend.alpha = 0;
+
             gf.alpha = 0;
+
             dad.alpha = 0;
             dad.y = -500;
 
@@ -64,7 +74,7 @@ function stepHit() {
         case 2272:
             FlxTween.tween(dad, {y: -100}, 2, {ease: FlxEase.linear});
 
-        FlxTween.tween(camGame, {zoom: 0.58}, 0.7, {ease: FlxEase.linear, onComplete: function(tween:FlxTween){defaultCamZoom = 0.58;}});
+            FlxTween.tween(camGame, {zoom: 0.58}, 0.7, {ease: FlxEase.linear, onComplete: function(tween:FlxTween){defaultCamZoom = 0.58;}});
 
         case 2976:
             FlxTween.tween(camGame, {zoom: 1}, 65, {ease: FlxEase.linear, onComplete: function(tween:FlxTween){defaultCamZoom = 1;}});
