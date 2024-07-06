@@ -58,7 +58,7 @@ function stepHit(c)
     switch (c) {
         case 32:   showSongName("All Stars  (Act 1)", "IKENNY", "Ported by : WHISPER");
         case 1760:  showSongName("All Stars  (Act 2)", "scrumbo_");
-        case 3216:  showSongName("All Stars  (Act 3)", "theWAHbox ft. RedTV53");
+        case 3216:  showSongName("All Stars  (Act 3)", "theWAHbox ft. RedTV53", "Ported by : Inakuro & Sox");
         case 4816:  showSongName("All Stars  (Act 4)", "RedTV53 ft. FriedFrick");
             
         case 64, 1792, 3248, 4848: hideSongName();

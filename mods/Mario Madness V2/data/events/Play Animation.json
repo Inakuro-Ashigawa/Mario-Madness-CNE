@@ -2,13 +2,18 @@
     "params": [
         {
             "name": "Character",
-            "type": " StrumLine",
+            "type": "StrumLine",
             "defaultValue": 0
         },
         {
             "name": "Animation",
             "type": "String",
-            "defaultValue": ""
+            "defaultValue": "animation"
+        },
+        {
+            "name": "Is forced?",
+            "type": "Bool",
+            "defaultValue": true
         }
     ]
 }

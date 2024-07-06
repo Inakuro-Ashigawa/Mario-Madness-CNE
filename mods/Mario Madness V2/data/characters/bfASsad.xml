@@ -1,13 +1,23 @@
 <!DOCTYPE codename-engine-character>
-<character y="350" sprite="MushroomKingdom/all stars/MM_Boyfriend_Assets_cryingfuck" flipX="true" isPlayer="true" icon="bfsad">
-	<anim name="idle" anim="SCAREDIDLE" x="-4" y="30" fps="24" loop="false"/>
-	<anim name="singLEFT" anim="SCAREDLEFT" x="-10" y="31" fps="24" loop="false"/>
-	<anim name="singUP" anim="SCAREDUP" x="-25" y="92" fps="24" loop="false"/>
-	<anim name="singRIGHT" anim="SCAREDRIGHT" x="-41" y="31" fps="24" loop="false"/>
-	<anim name="singLEFTmiss" anim="MISSSCAREDLEFT" x="0" y="53" fps="24" loop="false"/>
-	<anim name="singDOWNmiss" anim="MISSSCAREDDOWN" x="-28" y="-3" fps="24" loop="false"/>
-	<anim name="singUPmiss" anim="MISSSCAREDUP" x="-23" y="120" fps="24" loop="false"/>
-	<anim name="singRIGHTmiss" anim="MISSSCAREDRIGHT" x="-43" y="61" fps="24" loop="false"/>
-	<anim name="singDOWN" anim="SCAREDDOWN" x="-31" y="-6" fps="24" loop="false"/>
-	<anim name="cut" anim="Act3Intro" x="-16" y="75" fps="20" loop="false"/>
+<character camx="-170" icon="bfsad" sprite="MushroomKingdom/all stars/MM_Boyfriend_Assets_cryingfuck" y="350" camy="-60" flipX="true" isPlayer="true">
+	<anim loop="false" x="-4" fps="24" y="30" anim="SCAREDIDLE" name="idle"/>
+
+	<anim loop="false" x="-10" fps="24" y="31" anim="SCAREDLEFT" name="singLEFT"/>
+
+	<anim loop="false" x="-25" fps="24" y="92" anim="SCAREDUP" name="singUP"/>
+
+	<anim loop="false" x="-41" fps="24" y="31" anim="SCAREDRIGHT" name="singRIGHT"/>
+
+	<anim loop="false" x="0" fps="24" y="53" anim="MISSSCAREDLEFT" name="singLEFTmiss"/>
+
+	<anim loop="false" x="-28" fps="24" y="-3" anim="MISSSCAREDDOWN" name="singDOWNmiss"/>
+
+	<anim loop="false" x="-23" fps="24" y="120" anim="MISSSCAREDUP" name="singUPmiss"/>
+
+	<anim loop="false" x="-43" fps="24" y="61" anim="MISSSCAREDRIGHT" name="singRIGHTmiss"/>
+
+	<anim loop="false" x="-31" fps="24" y="-6" anim="SCAREDDOWN" name="singDOWN"/>
+
+	<anim loop="false" x="-16" fps="20" y="75" anim="Act3Intro" name="cut"/>
+
 </character>
