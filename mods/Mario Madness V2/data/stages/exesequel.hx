@@ -12,7 +12,6 @@ var cancelCameraMove:Bool = false;
 var float:Bool = false;
 
 function postCreate(){
-    player.cpu = true;
     
     yoshi = strumLines.members[3].characters[0];
 

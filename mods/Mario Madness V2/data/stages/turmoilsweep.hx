@@ -6,6 +6,7 @@ var cancelCameraMove:Bool = false;
 var exampleTween:FlxTween;
 var blackBarThingie:FlxSprite;
 
+
 function onCountdown(event) event.cancel();
 
 function create(){
