@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 115,
+	"difficulties": [
+		"Normal"
+	],
+	"needsVoices": true,
+	"parsedColor": -13019009,
+	"displayName": "Dictator",
+	"icon": "secret",
+	"name": "dictator",
+	"color": "#39587F"
+}
