@@ -1,0 +1,19 @@
+{
+	"params": [
+		{
+			"name": "Event Name",
+			"type": "DropDown('', 'Hey!', 'Set GF Speed', 'Add Camera Zoom', 'Play Animation', 'Camera Follow Pos', 'Alt Idle Animation', 'Screen Shake', 'Change Character', 'Change Scroll Speed', 'Set Property', 'Play Sound')",
+			"defaultValue": ""
+		},
+		{
+			"name": "Value 1",
+			"type": "String",
+			"defaultValue": ""
+		},
+		{
+			"name": "Value 2",
+			"type": "String",
+			"defaultValue": ""
+		}
+	]
+}
