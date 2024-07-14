@@ -44,30 +44,30 @@ function create() {
     blackScreen.cameras = [introCam];
     add(blackScreen);
 
-    skyBox = new FlxSprite(-1300, -600).loadGraphic(Paths.image('stages/secret/SkyBox'));
+    skyBox = new FlxSprite(-1300, -600).loadGraphic(Paths.image('stages/ContentCosmos/secret/SkyBox'));
     skyBox.scrollFactor.set(0.4, 0.4);
     skyBox.setGraphicSize(Std.int(skyBox.width * 0.85));
     skyBox.antialiasing = true;
     insert(0, skyBox);
 
-    backTrees = new FlxSprite(-1300, -600).loadGraphic(Paths.image('stages/secret/BackTrees'));
+    backTrees = new FlxSprite(-1300, -600).loadGraphic(Paths.image('stages/ContentCosmos/secret/BackTrees'));
     backTrees.scrollFactor.set(0.8, 0.8);
     backTrees.setGraphicSize(Std.int(backTrees.width * 0.85));
     backTrees.antialiasing = true;
     insert(1, backTrees);
 
-    floorField = new FlxSprite(-1300, -600).loadGraphic(Paths.image('stages/secret/WallAndFloor'));
+    floorField = new FlxSprite(-1300, -600).loadGraphic(Paths.image('stages/ContentCosmos/secret/WallAndFloor'));
     floorField.setGraphicSize(Std.int(floorField.width * 0.85));
     floorField.antialiasing = true;
     insert(2, floorField);
 
-    frontTrees = new FlxSprite(-1300, -700).loadGraphic(Paths.image('stages/secret/BushesForeground'));
+    frontTrees = new FlxSprite(-1300, -700).loadGraphic(Paths.image('stages/ContentCosmos/secret/BushesForeground'));
     frontTrees.scrollFactor.set(1.4, 1.4);
     frontTrees.antialiasing = true;
     add(frontTrees);
 
     explosionBOM = new FlxSprite(250, -290);
-    explosionBOM.frames = Paths.getSparrowAtlas('stages/secret/SECRETEXPLOSION');
+    explosionBOM.frames = Paths.getSparrowAtlas('stages/ContentCosmos/secret/SECRETEXPLOSION');
     explosionBOM.animation.addByPrefix('BOOM', '1', 35, false);
     explosionBOM.alpha = 0;
     explosionBOM.setGraphicSize(Std.int(explosionBOM.width * 1.5));
@@ -75,7 +75,7 @@ function create() {
     add(explosionBOM);
 
     secretWarning = new FlxSprite();
-    secretWarning.frames = Paths.getSparrowAtlas('stages/secret/BulletBill_Warning');
+    secretWarning.frames = Paths.getSparrowAtlas('stages/ContentCosmos/secret/BulletBill_Warning');
     secretWarning.animation.addByPrefix('loop', 'warning', 24, true);
     secretWarning.animation.addByPrefix('bye', 'blow away', 24, false);
     secretWarning.animation.play('loop');
@@ -172,7 +172,7 @@ function onNoteHit(e) {
             var x = playerStrums.members[e.note.noteData].x;
             var y = playerStrums.members[e.note.noteData].y;
             var spl = new FlxSprite(x,y);
-            spl.frames = Paths.getSparrowAtlas('stages/secret/BulletBillMario_NOTE_assets');
+            spl.frames = Paths.getSparrowAtlas('stages/ContentCosmos/secret/BulletBillMario_NOTE_assets');
             spl.animation.addByPrefix('boom', 'notesplash', 24, false);
             spl.antialiasing = true;
             spl.offset.x += 460;
