@@ -2,11 +2,7 @@ function onNoteCreation(event) {
     if (event.noteType != "Bullet Bill")
         return;
 
-    event.noteSprite = 'stages/secret/BulletBillMario_NOTE_assets';
-    if (downscroll)
-    {
-        
-    }
+    event.noteSprite = 'game/notes/BulletBillMario_NOTE_assets';
     return;
 }
 
@@ -15,6 +11,9 @@ function onPostNoteCreation(event) {
         return;
 
     event.note.offset.set(10);
-    event.note.flipY = true;
+    if (downscroll)
+    {
+        event.note.flipY = true;
+    }
     return;
 }
