@@ -165,6 +165,7 @@ function stepHit(curStep) {
 
 function onNoteHit(e) {
     if (e.noteType == "Bullet Bill" || e.noteType == "Bullet2"){
+        e.animCancelled = true;
         bulletCounter += 1;
         if(bulletCounter >= 2){
             bulletCounter = 0;
