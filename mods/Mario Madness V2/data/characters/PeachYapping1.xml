@@ -1,0 +1,4 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="peach" camx="25" y="350" isGF="false" isPlayer="false" gameOverChar="" sprite="Woodland-of-Lies/coranation/Coronation_Peach_Dialogue1">
+	<anim x="0" loop="true" y="0" fps="21" anim="Peach" name="talk1"/>
+</character>

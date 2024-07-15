@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="peach" camx="25" y="350" isGF="false" isPlayer="false" gameOverChar="" sprite="Woodland-of-Lies/coranation/Coronation_Peach_GLITCH">
+	<anim x="0" loop="true" y="0" fps="24" anim="PeachIdleGlitch" name="idle"/>
+	<anim x="462" loop="false" y="-340" fps="24" anim="PeachLeftGlitch" name="singLEFT"/>
+	<anim x="37" loop="false" y="-385" fps="24" anim="PeachDownGlitch" name="singDOWN"/>
+	<anim x="-15" loop="false" y="-350" fps="24" anim="PeachRightGlitch" name="singRIGHT"/>
+	<anim x="130" loop="false" y="80" fps="24" anim="PeachUpGlitch" name="singUP"/>
+</character>

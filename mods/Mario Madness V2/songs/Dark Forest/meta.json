@@ -1,0 +1,16 @@
+{
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"beatsPerMesure": 4,
+	"bpm": 170,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -8320983,
+	"displayName": "Dark Forest",
+	"icon": "Icon-peach",
+	"name": "Dark Forest",
+	"color": "#810829"
+}
