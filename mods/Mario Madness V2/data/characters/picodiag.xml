@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" sprite="HellishHights/overdue/Too_Late_Pico_DIALOGUEFINAL_assets" flipX="true" isPlayer="true" icon="pico" gameOverChar="picodeath">
+	<anim name="dialog2" anim="PicoDIalogue" x="0" y="-5" fps="24" loop="false"/>
+	<anim name="dialog1" anim="PicoDialogue2" x="-38" y="88" fps="24" loop="false"/>
+	<anim name="dialog3" anim="PicoDialogue3" x="281" y="66" fps="24" loop="false"/>
+</character>

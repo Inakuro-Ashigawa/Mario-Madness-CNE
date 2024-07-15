@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 183,
+	"difficulties": [
+		"Normal"
+	],
+	"needsVoices": false,
+	"parsedColor": -12421268,
+	"displayName": "Overdue (Scrapped)",
+	"icon": "mrl",
+	"name": "overdue-old",
+	"color": "#42776C"
+}

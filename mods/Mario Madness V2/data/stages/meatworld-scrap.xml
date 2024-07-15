@@ -1,0 +1,7 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/HellishHights/TooLateBG/" name="meatworld-scrap" zoom="0.5">
+	<gf x="400" y="130"/>
+	<dad x="-460" y="300"/>
+	<boyfriend x="884" y="-50"/>
+	<combo x="884" y="50"/>
+</stage>

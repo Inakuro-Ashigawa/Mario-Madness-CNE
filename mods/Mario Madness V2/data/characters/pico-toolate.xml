@@ -1,0 +1,15 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" sprite="HellishHights/overdue/Too_Late_Pico_ass_sets_v2" flipX="true" isPlayer="true" icon="pico" gameOverChar="picodeath">
+	<anim name="singUP-alt" anim="PicoShoot0" x="211" y="174" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="PicoLeft0" x="8" y="-20" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="PicoDown0" x="-30" y="-90" fps="24" loop="false"/>
+	<anim name="singUP" anim="PicoUp0" x="-69" y="57" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="PicoRight0" x="-92" y="23" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="PicoLeftMiss" x="13" y="8" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="PicoDownMiss" x="5" y="-63" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="PicoUpMiss" x="-66" y="67" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="PicoRightMiss" x="-54" y="42" fps="24" loop="false"/>
+	<anim name="dialog1" anim="PicoDialogue" x="16" y="47" fps="24" loop="false"/>
+	<anim name="dialog2" anim="PicoDIalogue" x="-70" y="-40" fps="24" loop="false"/>
+	<anim name="idle" anim="Pico Idle Dance" x="0" y="0" fps="24" loop="false"/>
+</character>
