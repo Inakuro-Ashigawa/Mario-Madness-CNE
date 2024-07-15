@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 174,
+	"difficulties": [
+		"Hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -1,
+	"displayName": "Golden Land",
+	"icon": "Icon",
+	"name": "Golden Land",
+	"color": "#FFFFFF"
+}

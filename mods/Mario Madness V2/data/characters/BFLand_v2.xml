@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character isPlayer="true" flipX="true" holdTime="4" x="10" y="470" camX="50" camY="-70" scale="5.99999999999999" antialiasing="false"> <!-- CONVERTED VIA psychjsontocodenamexml.py by Burgerballs -->
+
+   <anim name="idle" anim="BFLand_v2 Idle" fps="12" loop="false" x="0" y="0"/>
+   <anim name="singLEFT" anim="BFLand_v2 Left0" fps="12" loop="false" x="-12" y="0"/>
+   <anim name="singDOWN" anim="BFLand_v2 Down0" fps="12" loop="false" x="-6" y="0"/>
+   <anim name="singUP" anim="BFLand_v2 Up0" fps="12" loop="false" x="0" y="0"/>
+   <anim name="singRIGHT" anim="BFLand_v2 Right0" fps="12" loop="false" x="-6" y="0"/>
+   <anim name="singDOWNmiss" anim="BFLand_v2 DownMiss" fps="12" loop="false" x="-95" y="-54"/>
+   <anim name="singUPmiss" anim="BFLand_v2 UpMiss" fps="12" loop="false" x="-90" y="-54"/>
+   <anim name="singRIGHTmiss" anim="BFLand_v2 RightMiss" fps="12" loop="false" x="-95" y="-53"/>
+   <anim name="singLEFTmiss" anim="BFLand_v2 LeftMiss" fps="12" loop="false" x="-84" y="-54"/>
+
+</character>
