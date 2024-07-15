@@ -88,8 +88,8 @@ var varWEHOVERING:Bool = false;
 var corners:Array<FlxSprite> = [];
 var curButton:FlxSprite = null;
 
-var menuGroups:FlxTypedGroup<FlxSprite>;
-var menuGroups = new FlxTypedGroup();
+var menuItems:FlxTypedGroup<FlxSprite>;
+var menuItems = new FlxTypedGroup();
 
 var cornerOffset:NumTween;
 
@@ -315,6 +315,16 @@ function reloadBG(){
     fondo11.color = FlxColor.RED;
     add(fondo11);
     fondo11.x = FlxG.random.float(0, fondo11.width * 2);
+
+    luigi = new FlxBackdrop(FlxAxes.x, null);
+    luigi.frames = Paths.getSparrowAtlas('Too_Late_Luigi_Hallway');
+    luigi.animation.addByPrefix('idle', "tll idle0000", 24, true);
+    luigi.animation.play('idle', true);
+    luigi.scrollFactor.set();
+    luigi.updateHitbox();
+    luigi.velocity.set(-2800, 0);
+    luigi.alpha = 0;
+    add(luigi);
 }
 
 function postionCorners(obj:FlxSprite, ?space:FlxPoint) {
@@ -393,6 +403,7 @@ function changeLevel(?duh:Int = 0, ?arrowCheck:Bool = true) {
     }
 
     changeItem();
+
 }
 function findGroupLevel(grp:FlxTypedSpriteGroup<FlxSprite>):Int {
     for (info in menuInfo) {
@@ -517,14 +528,13 @@ function update(elapsed:Float) {
 							{
                                 FlxG.switchState(new ModState("extras/PartyState"));
 							});
-                        /*
-                        dont even think about it- inakuro
+                        
+                        //dont even think about it- inakuro
 						case "Freeplay":
-							new FlxTimer().start(0.4, function(tmr:FlxTimer) {
-                                persistentDraw = false;  
-                                openSubState(new ModSubState('MM/MMFreeplay'));
+							new FlxTimer().start(0.4, function(tmr:FlxTimer) { 
+                                FlxG.switchState(new ModState("MM/MMFreeplay"));
                             });
-                        */
+
 					}
 				case 2:
 					switch (choice) {

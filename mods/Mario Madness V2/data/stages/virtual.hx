@@ -60,6 +60,7 @@ camGame.visible = camHUD.visible = false;
 
 function create(){
 
+
     late1 = new FlxSprite(startX, startY).loadGraphic(Paths.image("stages/HellishHights/virtual/TooLate"));
     late1.scale.set(1.7, 1.7);
     insert(0, late1);
@@ -375,7 +376,7 @@ function preGfWindow(){
 function dupingTime1(){
     dupeTimer = 4;
     dupeMax = 3;
-    if (FlxG.save.data.virtualShaders) for (i in [camGame, camHUD]) i.addShader(angel);
+    if (FlxG.save.data.virtualShaders) for (i in [camGame]) i.addShader(angel);
 }
 
 function dupingTime2(){
@@ -387,7 +388,7 @@ function stopDupe(){
     dupeTimer = 0;
     dupe.mirrorS = false;
     dupe.multi = 1;
-    for (i in [camGame, camHUD]) i.removeShader(angel);
+    for (i in [camGame]) i.removeShader(angel);
 }
 
 function gf(){
@@ -407,7 +408,7 @@ function gf(){
     if (!FlxG.save.data.virtualTrans) yourhead.visible = true;
     FlxG.camera.bgColor = 0xFF000101;
     camHUD.alpha = 1;
-    dadZoom = bfZoom = .4;
+    dadZoom = bfZoom = .55;
     gfCamTime = true;
     cameraMovementEnabled = false;
     canPause = false;
@@ -415,17 +416,16 @@ function gf(){
     if (FlxG.save.data.virtualWallpaper && !FlxG.save.data.virtualBetter) setWallpaper(realPath); // being run again to prevent black background
     if (FlxG.save.data.virtualBetter){
         showSongNameAct2();
-        new FlxTimer().start(7, function(tmr:FlxTimer){
+        new FlxTimer().start(6, function(tmr:FlxTimer){
             hideSongName();
         });
         
     }
 }
-
 function destroy(){
     removeTransparent();
     showTaskbar();
-    setWallpaper(prevWallpaper);
+    if (!FlxG.save.data.virtualBetter) setWallpaper(prevWallpaper);
     showWindows(prevHidden);
     window.resizable = true;
 }

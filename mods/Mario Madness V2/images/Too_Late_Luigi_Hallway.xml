@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Too_Late_Luigi_Hallway.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="tll singDOWN0000" x="5" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singsingDOWN0001" x="1124" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singsingDOWN0002" x="1124" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singDOWN0003" x="2243" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singDOWN0004" x="2243" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singDOWN0005" x="2243" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singDOWN0006" x="2243" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singDOWN0007" x="2243" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singUP0000" x="3362" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singUP0001" x="4487" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singUP0002" x="4487" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singUP0003" x="5612" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singUP0004" x="5612" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singUP0005" x="6737" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singUP0006" x="6737" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singUP0007" x="6737" y="5" width="1584" height="1911"/>
+	<SubTexture name="tll singRIGHT0000" x="5" y="1926" width="1584" height="1913"/>
+	<SubTexture name="tll singRIGHT0001" x="1599" y="1926" width="1584" height="1913"/>
+	<SubTexture name="tll singRIGHT0002" x="1599" y="1926" width="1584" height="1913"/>
+	<SubTexture name="tll singRIGHT0003" x="3193" y="1926" width="1584" height="1913"/>
+	<SubTexture name="tll singRIGHT0004" x="3193" y="1926" width="1584" height="1913"/>
+	<SubTexture name="tll singRIGHT0005" x="4787" y="1926" width="1584" height="1913"/>
+	<SubTexture name="tll singRIGHT0006" x="4787" y="1926" width="1584" height="1913"/>
+	<SubTexture name="tll singRIGHT0007" x="4787" y="1926" width="1584" height="1913"/>
+	<SubTexture name="tll singLEFT0000" x="5" y="3849" width="1584" height="1911"/>
+	<SubTexture name="tll singLEFT0001" x="1525" y="3849" width="1584" height="1911"/>
+	<SubTexture name="tll singLEFT0002" x="1525" y="3849" width="1584" height="1911"/>
+	<SubTexture name="tll singLEFT0003" x="3045" y="3849" width="1584" height="1911"/>
+	<SubTexture name="tll singLEFT0004" x="3045" y="3849" width="1584" height="1911"/>
+	<SubTexture name="tll singLEFT0005" x="4565" y="3849" width="1584" height="1911"/>
+	<SubTexture name="tll singLEFT0006" x="4565" y="3849" width="1584" height="1911"/>
+	<SubTexture name="tll singLEFT0007" x="4565" y="3849" width="1584" height="1911"/>
+	<SubTexture name="tll idle0000" x="6085" y="3849" width="1584" height="1911"/>
+</TextureAtlas>

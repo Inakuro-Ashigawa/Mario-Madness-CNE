@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character isPlayer="true" flipX="true" holdTime="4" x="10" y="470" camX="50" camY="-70" scale="5.99999999999999" antialiasing="false"> <!-- CONVERTED VIA psychjsontocodenamexml.py by Burgerballs -->
+<character isPlayer="true" flipX="true" holdTime="4" x="10" y="470" icon="bf-land2" camX="50" camY="-70" scale="5.99999999999999" antialiasing="false"> <!-- CONVERTED VIA psychjsontocodenamexml.py by Burgerballs -->
 
    <anim name="idle" anim="BFLand_v2 Idle" fps="12" loop="false" x="0" y="0"/>
    <anim name="singLEFT" anim="BFLand_v2 Left0" fps="12" loop="false" x="-12" y="0"/>

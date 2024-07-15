@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/HellishHights/gb/" zoom="0.8">
+	<sprite x="485" y="288" sprite="4" scale="6" name="cas"/>
+	<sprite x="123.25" y="-58.4" scale="4" scrollx="0.1" name="Mario_Phase2_Background_Assets_Static" antialiasing="false" scrolly="0.1" sprite="Mario_Phase2_Background_Assets_Static" alpha="0.2">
+		<anim x="0" loop="true" y="0" fps="24" anim="Estatica papu instancia 1" type="loop" name="idle"/>
+	</sprite>
+	<sprite x="429" antialiasing="false" y="256" sprite="3" scale="6" name="3"/>
+	<gf x="410" y="510"/>
+	<sprite x="418" y="274" sprite="2" scale="6" name="2"/>
+	<dad/>
+	<bf x="925" y="139.5"/>
+	<combo x="711" y="417"/>
+	<sprite scrolly="1.2" x="534.5" y="142.2" sprite="1" scale="6" scrollx="1.2" name="1"/>
+</stage>

@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character isPlayer="false" flipX="false" holdTime="4" x="238" y="210" camX="-170" camY="-230" scale="5.99999999999999" antialiasing="false"> <!-- CONVERTED VIA psychjsontocodenamexml.py by Burgerballs -->
+<character isPlayer="false" flipX="false" holdTime="4" icon="gb2"  x="238" y="210" camX="-170" camY="-230" scale="5.99999999999999" antialiasing="false"> <!-- CONVERTED VIA psychjsontocodenamexml.py by Burgerballs -->
 
    <anim name="idle" anim="idle" loop="true" x="0" y="0"/>
    <anim name="singUP" anim="up" loop="false" x="0" y="0"/>
