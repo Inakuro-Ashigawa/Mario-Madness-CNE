@@ -1,0 +1,13 @@
+{
+    "opponentModeAllowed":true,
+    "icon":"beta2",
+    "difficulties":["hard"],
+    "parsedColor":-1,
+    "color":"#FFFFFF",
+    "name":"alone",
+    "coopAllowed":false,
+    "stepsPerBeat":4,
+    "displayName":"alone",
+    "beatsPerMeasure":4,
+    "needsVoices":true,
+    "bpm":103}

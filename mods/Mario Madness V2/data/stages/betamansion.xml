@@ -1,0 +1,11 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.8" name="betamansion" folder="stages/Woodland-of-Lies/betamansion" startCamPosY="540" startCamPosX="810">
+
+    <sprite name="Skybox"     x="-1200"   y="-800" sprite="Skybox"  scroll="0.2"/>
+    <sprite name="BackBG"     x="-1200"   y="-800" sprite="BackBG"  scroll="0.8"/>
+    <sprite name="FrontBG"     x="-1200"   y="-800" sprite="FrontBG"/>
+
+    <boyfriend x="920" y = "100"/>
+    <girlfriend x="400" y="100"/>
+    <dad x = "70" y = "100"/>
+</stage>
