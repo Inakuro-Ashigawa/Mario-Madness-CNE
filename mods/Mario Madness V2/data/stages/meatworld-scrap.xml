@@ -1,7 +1,12 @@
 <!DOCTYPE codename-engine-stage>
-<stage folder="stages/HellishHights/TooLateBG/" name="meatworld-scrap" zoom="0.5">
+<stage folder="stages/HellishHights/TooLateBG/" zoom="0.5" name="meatworld-scrap">
+	<sprite x="-1400" scroll="0.95" sprite="street/BackTrees" y="-550" name="street1"/>
+	<sprite x="-1400" scroll="1.05" sprite="street/Front Trees" y="-550" name="street2"/>
+	<sprite x="-1400" name="street3" sprite="street/Road" y="-550"/>
+	<sprite x="-1400" name="street4" sprite="street/car" y="-550"/>
 	<gf x="400" y="130"/>
 	<dad x="-460" y="300"/>
 	<boyfriend x="884" y="-50"/>
-	<combo x="884" y="50"/>
+	<sprite x="-1600" sprite="street/Foreground Trees" y="-550" name="streetFore" scrollx="1.2"/>
+	<combo x="866.5" y="281"/>
 </stage>

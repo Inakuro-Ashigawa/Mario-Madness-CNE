@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="-210" y="-230" sprite="HellishHights/overdue/Too_Late_Luigi_Assets_causape" camx="200" camy="70" icon="fake-mrl">
+<character x="-210" y="-230" sprite="HellishHights/overdue/Too_Late_Luigi_Assets_causape" camx="200" camy="70" icon="fake-mrl" color="#44776D">
 	<anim name="idle" anim="FakerIdle" x="161" y="-331" fps="24" loop="false"/>
 	<anim name="singLEFT" anim="FakerLeft" x="229" y="-328" fps="24" loop="false"/>
 	<anim name="singUP" anim="FakerUp" x="156" y="-315" fps="24" loop="false"/>

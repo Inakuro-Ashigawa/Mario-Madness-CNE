@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="-1800" y="-350" sprite="HellishHights/overdue/Too_Late_Pico_GameOver" flipX="true" isPlayer="true" icon="pico">
+<character x="-1800" y="-350" sprite="HellishHights/overdue/Too_Late_Pico_GameOver" flipX="true" isPlayer="true" icon="pico" color="#B7D855">
 	<anim name="deathLoop" anim="Pico Game Over Loop" x="290" y="252" fps="24" loop="false"/>
 	<anim name="deathConfirm" anim="Pico Game Over Confirm" x="290" y="252" fps="24" loop="false"/>
 	<anim name="firstDeath" anim="Pico Game Over Anim" x="1500" y="300" fps="24" loop="false"/>

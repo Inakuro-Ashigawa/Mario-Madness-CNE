@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character y="350" sprite="HellishHights/overdue/Too_Late_Pico_ass_sets_v2" flipX="true" isPlayer="true" icon="pico" gameOverChar="picodeath">
+<character y="350" sprite="HellishHights/overdue/Too_Late_Pico_ass_sets_v2" flipX="true" isPlayer="true" icon="pico" color="#B7D855" gameOverChar="picodeath">
 	<anim name="idle" anim="PicoCrouchIdle" x="-63" y="-42" fps="24" loop="false"/>
 	<anim name="singUP-alt" anim="PicoShoot0" x="211" y="174" fps="24" loop="false"/>
 	<anim name="singLEFT" anim="PicoCrouchLeft" x="-83" y="-40" fps="24" loop="false"/>
