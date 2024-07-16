@@ -1,17 +1,7 @@
 <!DOCTYPE codename-engine-stage>
-<stage folder="stages/Woodland-of-Lies/Coronation/" zoom="0.6">
-	<sprite x="-1111.75" y="-585" sprite="FondoFondo" type="none" scale="1.1" name="bg"/>
-	<sprite x="-1200" sprite="BGforBG" y="-4850" scale="1.2" name="bg2"/>
-	<sprite x="-1323.25" sprite="Treehouse" y="-4850" scale="1.1" name="Treehoiuse"/>
-	<sprite x="266.75" y="-3650" sprite="CoroDay_DeadMario" name="casa"/>
-	<sprite x="-1331" y="-606" sprite="Arboles" scale="1.1" name="ground"/>
-	<sprite x="-1245.5" y="-572" sprite="AtrasArboles" scale="1.1" name="atras"/>
-	<sprite x="-1252.5" y="-597" sprite="asdas" scale="1.1" name="asdas"/>
-	<sprite x="-1237" y="-685" sprite="Stage" scale="1.1" name="Stage"/>
-	<gf x="444" y="208"/>
-	<dad x="-138" y="-691.5"/>
-	<bf x="829" y="383"/>
-	<sprite x="-1111" sprite="TransitionBottom" y="-2425.25" scale="1.2" name="treesbottom"/>
-	<sprite x="-1111" sprite="TransitionTop" y="-3225.25" scale="1.2" name="Trees"/>
-	<combo x="11829"/>
+<stage folder="stages/Woodland-of-Lies/Coronation/" zoom="1">
+	<gf x="300" y="230"/>
+	<dad x="100" y="-200"/>
+	<bf x="870" y="250"/>
+	<combo x="829" y="383"/>
 </stage>
