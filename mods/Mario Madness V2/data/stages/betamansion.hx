@@ -3,31 +3,6 @@ var angel:CustomShader = null;
 
 var camEST = new FlxCamera();
 
-var intensity = 5; // How far the camera moves on press, default is 5
-                   // 5 = 50 Pixels
-
-var alignX = true; // Makes up and down movement 70% of left and right movement, defualt is true
-
-var move = true;   // Do you want the camera to move? default is true (can also be toggled with "toggleMovePress" event)
-
-var inte = intensity*10;
-var inteW = (intensity*10)* (alignX ? 0.7 : 1);
-var posOffsets = [
-		[-inte, 0],
-		[0, inteW],
-		[0, -inteW],
-		[inte, 0]
-	];
-function onNoteHit(event) {
-    camFollow.setPosition(strumLines.members[3].characters[0].getCameraPosition().x + posOffsets[event.direction][0], strumLines.members[3].characters[0].getCameraPosition().y + posOffsets[event.direction][1]);
-}
- 
-
-function toggleMovePress(event) {
-    move = !move;
-}
-
-
 introLength = 0;
 function onCountdown(event) event.cancel(); 
 
@@ -38,7 +13,7 @@ function create(){
     FlxG.cameras.add(camHUD, false);
     FlxG.cameras.add(camEST, false);
 
-    health = 2;
+    //health = 2;
 
     if(FlxG.save.data.flashingLights){
         bfHang = new FlxSprite(700, -100).loadGraphic(Paths.image('modstuff/Beta_Bf_Hang'));
