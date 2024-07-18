@@ -1,3 +1,5 @@
+import haxe.ds.StringMap;
+
 var intensity = 5; // How far the camera moves on press, default is 5
                    // 5 = 50 Pixels
 
@@ -43,4 +45,24 @@ function onNoteHit(event) {
 
 function toggleMovePress(event) {
     move = !move;
+}
+
+function onEvent(e){
+	switch (e.event.name) {
+		case 'Psych Events':
+			var value1:String = e.event.params[1];
+			var value2:String = e.event.params[2];
+			var flValue1:Null<Float> = Std.parseFloat(value1);
+			var flValue2:Null<Float> = Std.parseFloat(value2);
+			if (Math.isNaN(flValue1)) flValue1 = null;
+			if (Math.isNaN(flValue2)) flValue2 = null;
+			switch (e.event.params[0]) {
+				case 'Camera Follow Pos':
+					if (flValue1 != null || flValue2 != null) {
+						move = false;
+					}else if(flValue1 == null && flValue2 == null) {
+						move = true;
+					}
+			}
+		}
 }

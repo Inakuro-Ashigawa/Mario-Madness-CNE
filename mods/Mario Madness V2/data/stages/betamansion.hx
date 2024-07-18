@@ -1,9 +1,32 @@
 import flixel.tweens.FlxTween.FlxTweenType;
 var angel:CustomShader = null;
 
-importScript("data/modchart/NoteCameras");
-
 var camEST = new FlxCamera();
+
+var intensity = 5; // How far the camera moves on press, default is 5
+                   // 5 = 50 Pixels
+
+var alignX = true; // Makes up and down movement 70% of left and right movement, defualt is true
+
+var move = true;   // Do you want the camera to move? default is true (can also be toggled with "toggleMovePress" event)
+
+var inte = intensity*10;
+var inteW = (intensity*10)* (alignX ? 0.7 : 1);
+var posOffsets = [
+		[-inte, 0],
+		[0, inteW],
+		[0, -inteW],
+		[inte, 0]
+	];
+function onNoteHit(event) {
+    camFollow.setPosition(strumLines.members[3].characters[0].getCameraPosition().x + posOffsets[event.direction][0], strumLines.members[3].characters[0].getCameraPosition().y + posOffsets[event.direction][1]);
+}
+ 
+
+function toggleMovePress(event) {
+    move = !move;
+}
+
 
 introLength = 0;
 function onCountdown(event) event.cancel(); 
@@ -15,6 +38,8 @@ function create(){
     FlxG.cameras.add(camHUD, false);
     FlxG.cameras.add(camEST, false);
 
+    health = 2;
+
     if(FlxG.save.data.flashingLights){
         bfHang = new FlxSprite(700, -100).loadGraphic(Paths.image('modstuff/Beta_Bf_Hang'));
         bfHang.alpha = 0;
@@ -23,20 +48,6 @@ function create(){
         bfHang.cameras = [camEST];
         add(bfHang);
     }
-
-    blackBarThingie = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-	blackBarThingie.scrollFactor.set(0, 0);
-    blackBarThingie.cameras = [camEST];
-	blackBarThingie.alpha = 1;
-	add(blackBarThingie);
-
-    fog = new FlxSprite(0, 0).loadGraphic(Paths.image('modstuff/126'));
-    fog.alpha = 0.8;
-    fog.cameras = [camEST];
-    insert(1, fog);
-
-    boyfriend.alpha = 0;
-    gf.alpha = 0;
 
     rainFall = new FlxSprite(-170, 50).loadGraphic(Paths.image('stages/Woodland-of-Lies/betamansion/old/Beta_Luigi_Rain_V1'));
     rainFall.alpha = 0;
@@ -47,16 +58,38 @@ function create(){
     rainFall.animation.play('idle', true);
     add(rainFall);
 
-    FlxTween.tween(boyfriend, {y: boyfriend.y - 20}, 3, {ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
-    FlxTween.tween(boyfriend, {x: boyfriend.x + 40}, 5, {ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
+    blackBarThingie = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+	blackBarThingie.scrollFactor.set(0, 0);
+    blackBarThingie.cameras = [camEST];
+	blackBarThingie.alpha = 1;
+	add(blackBarThingie);
 
-    FlxTween.tween(gf, {y: gf.y + 40}, 2, {startDelay: 0.2, ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
-	FlxTween.tween(gf, {x: gf.x - 20}, 4, {startDelay: 0.2, ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
+    boyfriend.alpha = 0;
+    strumLines.members[3].characters[0].alpha = 0;
+
+    fog = new FlxSprite(0, 0).loadGraphic(Paths.image('modstuff/126'));
+    fog.alpha = 0.8;
+    fog.cameras = [camEST];
+    insert(1, fog);
+
+    FlxTween.tween(boyfriend, {y: boyfriend.y - 20}, 3, {ease: FlxEase.quadInOut, type: FlxTweenType.PINGPONG});
+    FlxTween.tween(boyfriend, {x: boyfriend.x + 40}, 5, {ease: FlxEase.quadInOut, type: FlxTweenType.PINGPONG});
+
+    FlxTween.tween(strumLines.members[3].characters[0], {y: strumLines.members[3].characters[0].y + 40}, 2, {startDelay: 0.2, ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
+	FlxTween.tween(strumLines.members[3].characters[0], {x: strumLines.members[3].characters[0].x - 20}, 4, {startDelay: 0.2, ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
 
     angel = new CustomShader("angel");
     angel.data.pixel.value = [0.5, 0.5];
     angel.data.stronk.value = [0, 0];
     angel.data.iTime.value = [0.0];
+
+    strumLines.members[2].characters[0].scale.set(0.2, 0.2);
+	strumLines.members[2].characters[0].scrollFactor.set(0.8, 0.8);
+	strumLines.members[2].characters[0].alpha = 0;
+	strumLines.members[2].characters[0].x = 310;
+	strumLines.members[2].characters[0].y = -360;
+
+    insert(2, strumLines.members[2].characters[0]);
 
     //camGame.addShader(angel);
     //camHUD.addShader(angel);
@@ -69,7 +102,10 @@ function update(elapsed){
 function beatHit(curBeat){
     switch(curBeat){
         case 2:
-            FlxTween.tween(blackBarThingie, {alpha: 0}, 5);
+            FlxTween.tween(blackBarThingie, {alpha: 0.5}, 5);
+        case 8:
+            defaultCamZoom = 0.9;
+        
         case 40:
             if(FlxG.save.data.flashingLights){
                 FlxG.camera.flash(FlxColor.WHITE, 1);
@@ -77,9 +113,95 @@ function beatHit(curBeat){
                 bfHang.animation.play('idle');
                 FlxTween.tween(bfHang, {alpha: 0}, 2, {ease: FlxEase.quadOut});
             }
+            defaultCamZoom = 0.75;
         case 41:
             FlxTween.tween(rainFall, {alpha: 0.6}, 5);
+            FlxTween.tween(blackBarThingie, {alpha: 0}, 5);
+        case 44:
+            FlxTween.tween(boyfriend, {alpha: 0.9}, 2, {ease: FlxEase.quadOut});
+            FlxTween.tween(strumLines.members[3].characters[0], {alpha: 0.9}, 2, {ease: FlxEase.quadOut});
+        case 112:
+            defaultCamZoom = 0.6;
+        case 120:
+            defaultCamZoom = 0.5;
+        case 280:
+            defaultCamZoom = 0.7;
+        case 312:
+            defaultCamZoom = 0.8;
+        case 341:
+            FlxTween.tween(camGame, {zoom: 0.65}, 2, {ease: FlxEase.quadInOut});
+        case 343:
+            FlxTween.tween(strumLines.members[2].characters[0], {alpha: 0.9}, 2, {ease: FlxEase.quadOut});
+            FlxTween.tween(strumLines.members[2].characters[0].scale, {x: 1, y: 1}, 3, {ease: FlxEase.quadOut});
+            FlxTween.tween(strumLines.members[2].characters[0].scrollFactor, {x: 0.95, y: 0.95}, 3, {ease: FlxEase.quadOut});
+            FlxTween.tween(strumLines.members[2].characters[0], {x: 630, y: -420}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(){
+                FlxTween.tween(strumLines.members[2].characters[0], {x: 600, y:  -360}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(){
+                    FlxTween.tween(strumLines.members[2].characters[0], {x: strumLines.members[2].characters[0].x - 550}, 5, {ease: FlxEase.quadInOut, type: FlxTweenType.PINGPONG});
+                    FlxTween.tween(strumLines.members[2].characters[0], {y: strumLines.members[2].characters[0].y + 100}, 1.75, {ease: FlxEase.quadInOut, type: FlxTweenType.PINGPONG});
+                }});
+            }});
+            defaultCamZoom = 0.55;
+        case 372:
+            FlxTween.tween(strumLines.members[2].characters[0], {y: -900}, 1.75, {ease: FlxEase.cubeIn});
+			FlxTween.tween(strumLines.members[2].characters[0], {alpha: 0}, 1.75, {ease: FlxEase.cubeIn});
+        case 376:
+            defaultCamZoom = 0.6;
+        case 404:
+            defaultCamZoom = 0.8;
+        case 405:
+            defaultCamZoom = 0.9;
+        case 406:
+            defaultCamZoom = 1;
+        case 407:
+            defaultCamZoom = 1.1;
+        case 408:
+            defaultCamZoom = 0.9;
+            if(FlxG.save.data.flashingLights){
+                FlxG.camera.flash(FlxColor.WHITE, 1);
+            }
+            blackBarThingie.alpha = 0.5;
+        case 416:
+            FlxTween.tween(strumLines.members[3].characters[0],      {alpha: 0}, 2.4);
+			FlxTween.tween(boyfriend, {alpha: 0}, 2.4);
+        case 448:
+            defaultCamZoom = 1;
+        case 452:
+            defaultCamZoom = 0.95;
+        case 466:
+            FlxTween.tween(blackBarThingie, {alpha: 1}, 2);
+            defaultCamZoom = 0.8;
     }
+}
+
+function stepHit(curStep){
+    switch(curStep){
+        case 1698:
+            defaultCamZoom = 1;
+        case 1730:
+            defaultCamZoom = 1.05;
+        case 1762:
+            defaultCamZoom = 1.1;
+    }
+}
+
+function onEvent(e){
+	switch (e.event.name) {
+		case 'Psych Events':
+			var value1:String = e.event.params[1];
+			var value2:String = e.event.params[2];
+			var flValue1:Null<Float> = Std.parseFloat(value1);
+			var flValue2:Null<Float> = Std.parseFloat(value2);
+			if (Math.isNaN(flValue1)) flValue1 = null;
+			if (Math.isNaN(flValue2)) flValue2 = null;
+			switch (e.event.params[0]) {
+				case 'Camera Follow Pos':
+					if (flValue1 != null || flValue2 != null) {
+						move = true;
+					}else if(flValue1 == null && flValue2 == null) {
+						move = false;
+					}
+			}
+		}
 }
 
 /*  Code for the rain:
