@@ -1,3 +1,4 @@
+import funkin.backend.system.framerate.Framerate;
 import funkin.backend.assets.ModsFolder;
 import lime.graphics.Image;
 import openfl.system.Capabilities;
@@ -51,6 +52,10 @@ function preStateSwitch() {
     for (redirectState in redirectStates.keys())
         if (FlxG.game._requestedState is redirectState)
             FlxG.game._requestedState = new ModState(redirectStates.get(redirectState));
+}
+
+function update() {
+    Framerate.codenameBuildField.text = 'Mario Madness V2 (CNE Port)';
 }
 
 
