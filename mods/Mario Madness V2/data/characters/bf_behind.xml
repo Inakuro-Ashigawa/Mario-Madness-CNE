@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="60" y="290" sprite="MushroomKingdom/all stars/bf_behind" flipX="true" isPlayer="true" icon="bf">
+	<anim name="idle" anim="BF IDLE" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="bf left0" x="10" y="0" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="bf down0" x="7" y="-16" fps="24" loop="false"/>
+	<anim name="singUP" anim="bf up0" x="-5" y="16" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="bf right0" x="-7" y="0" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="bf left miss" x="5" y="2" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="bf down miss" x="6" y="-3" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="bf right miss" x="-8" y="1" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="BF UP MISS" x="0" y="12" fps="24" loop="false"/>
+</character>
