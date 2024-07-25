@@ -51,6 +51,8 @@ function create() {
     add(bfcape);
     add(boyfriend);
 
+    strumLines.members[3].characters[0].visible = false;
+
 	faropapu = new FlxSprite(-1200, -500, Paths.image('stages/Woodland-of-Lies/Coronation/FondoFondo'));
     faropapu.antialiasing = true;
     faropapu.scrollFactor.set(0.5, 0.5);
@@ -353,15 +355,22 @@ function onCameraMove(event) {
 var dadPosX;
 var dadPosY;
 
+var dadDialPosX;
+var dadDialPosY;
+
 function postCreate() {
 	isCameraOnForcedPos = true;
 	var colornew:Int = 0xFF93ADB5;
 	dad.color = colornew;
+    strumLines.members[3].characters[0].color = colornew; // peach dialogue
     gf.color = colornew;
     boyfriend.color = colornew;
 
     dadPosY = dad.y;
     dadPosX = dad.x;
+
+    dadDialPosY = strumLines.members[3].characters[0].y;
+    dadDialPosX = strumLines.members[3].characters[0].x;
 
     camFollow.setPosition(1020, 750);
     FlxG.camera.snapToTarget();
@@ -371,6 +380,9 @@ function postCreate() {
 function canbefly() {
 	extraTween.push(FlxTween.tween(dad, {x: dadPosX - 220}, 4, {ease: FlxEase.quadInOut, type: 4}));
     extraTween.push(FlxTween.tween(dad, {y: dadPosY + 100}, 1.4, {ease: FlxEase.quadInOut, type: 4}));
+
+    extraTween.push(FlxTween.tween(strumLines.members[3].characters[0], {x: dadDialPosX - 220}, 4, {ease: FlxEase.quadInOut, type: 4}));
+    extraTween.push(FlxTween.tween(strumLines.members[3].characters[0], {y: dadDialPosY + 100}, 1.4, {ease: FlxEase.quadInOut, type: 4}));
 }
 
 function focusToTheBitch() {
@@ -410,8 +422,6 @@ function HUDbye() {
 }
 
 function talk() {
-	var colornew:Int = 0xFF93ADB5;
-	dad.color = colornew;
-	extraTween.push(FlxTween.tween(dad, {x: dadPosX - 220}, 4, {ease: FlxEase.quadInOut, type: 4}));
-    extraTween.push(FlxTween.tween(dad, {y: dadPosY + 100}, 1.4, {ease: FlxEase.quadInOut, type: 4}));
+	strumLines.members[3].characters[0].visible = true;
+    dad.visible = false;
 }
