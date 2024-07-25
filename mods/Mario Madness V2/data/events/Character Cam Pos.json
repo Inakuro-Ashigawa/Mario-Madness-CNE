@@ -1,0 +1,19 @@
+{
+    "params": [
+        {
+            "name": "Character\nInstructions:\nEnter the strumLine.members[?] number",
+            "type": "String",
+            "defaultValue": ""
+        },
+        {
+            "name": "X Value\nPretty self explanatory",
+            "type": "String",
+            "defaultValue": "100"
+        },
+        {
+            "name": "Y Value\nPretty self explanatory",
+            "type": "String",
+            "defaultValue": "100"
+        }
+    ]
+}
