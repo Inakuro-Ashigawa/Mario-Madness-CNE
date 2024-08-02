@@ -13,6 +13,10 @@ function create(){
 	titleText.setFormat(Paths.font("mariones.ttf"), 42, FlxColor.BLACK, "center", FlxTextBorderStyle.OUTLINE, gbcolor);
 	titleText.borderSize = 3;
     titleText.borderColor = FlxColor.RED;
+    if(FlxG.save.data.callLuigi)
+        titleText.borderColor = 0xFF25cd49;
+    else
+        titleText.borderColor = FlxColor.RED;
     titleText.cameras = [camSong];
 	titleText.screenCenter(FlxAxes.X);
 	titleText.alpha = 0;
@@ -21,7 +25,10 @@ function create(){
 	autorText = new FlxText(375, titleText.y - 70, 0, autor, 35);
 	autorText.setFormat(Paths.font("mariones.ttf"), 35, FlxColor.BLACK, "center", FlxTextBorderStyle.OUTLINE, gbcolor);
 	autorText.borderSize += 2;
-    autorText.borderColor = FlxColor.RED;
+    if(FlxG.save.data.callLuigi)
+        autorText.borderColor = 0xFF25cd49;
+    else
+        autorText.borderColor = FlxColor.RED;
     autorText.cameras = [camSong];
     autorText.screenCenter(FlxAxes.X);
 	autorText.alpha = 0;
@@ -29,7 +36,10 @@ function create(){
 
     porterText = new FlxText(327.5, autorText.y - 55, 0, porter, 22.5);
 	porterText.setFormat(Paths.font("mariones.ttf"), 22.5, FlxColor.BLACK, "center", FlxTextBorderStyle.OUTLINE, gbcolor);
-    porterText.borderColor = FlxColor.RED;
+    if(FlxG.save.data.callLuigi)
+        porterText.borderColor = 0xFF25cd49;
+    else
+        porterText.borderColor = FlxColor.RED;
 	porterText.borderSize += 2;
     porterText.cameras = [camSong];
     porterText.screenCenter(FlxAxes.X);
@@ -50,6 +60,10 @@ function create(){
     titleLine2.alpha = 0;
 
     titleLine1 = new FlxSprite(titleLine2.x - 5, titleLine2.y - 2).makeGraphic(Std.int(checkwidth + 10), 8, gbcolor);
+    if(FlxG.save.data.callLuigi)
+        titleLine1.color = 0xFF25cd49;
+    else
+        titleLine1.color = gbcolor;
     titleLine1.cameras = [camSong];
     titleLine1.alpha = 0;
     add(titleLine1);
@@ -61,6 +75,10 @@ function create(){
     porterLine2.alpha = 0;
 
     porterLine1 = new FlxSprite(porterText.x - 5, porterText.y - 2).makeGraphic(Std.int(Math.max(autorText.width + 10, porterText.length + 1000)), 8, gbcolor);
+    if(FlxG.save.data.callLuigi)
+        porterLine1.color = 0xFF25cd49;
+    else
+        porterLine1.color = gbcolor;
     porterLine1.cameras = [camSong];
     porterLine1.alpha = 0;
 

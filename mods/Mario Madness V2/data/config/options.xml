@@ -8,8 +8,10 @@
             <checkbox id="virtualApps" name="Hide Apps" desc="If checked, all of your apps running in the background will get hidden during a specific part in Paranoia. This will not fully close your apps by the way, so you don't have to worry about your work being lost!"/>
             <checkbox id="virtualShaders" name="Shaders" desc="If checked, shaders will occur in paranoia. Disable if you're sensitive to cameras duplicating and/or if you are sensitive to flashy shaders."/>
             <checkbox id="virtualBetter" name="But better" desc="If checked, Paranoia will change to the /better\ version"/>
+            <checkbox id="virtualModchart" name="Modchart" desc="If checked, Paranoia will added a /modcharts\, how like NotITG"/>
         </menu>
         <checkbox id="streamerMode" name="Streamer Mode" desc="Changes parameters that can be annoying when playing. If you are a streamer or if you are recording this game, we recommend you to activate this option. (This does not disable other options in this menu.)"/>
+        <checkbox id="callLuigi" name="Call Luigi (Botplay)" desc="If checked, botplay is activated, you can relax, make coffee and enjoy."/>
     </menu>
     <menu name="Visual">
         <checkbox id="flashingLights" name="Flashing Lights" desc="If checked, flashing lights will occur in menus and songs. Disable if you are sensitive to this!"/>

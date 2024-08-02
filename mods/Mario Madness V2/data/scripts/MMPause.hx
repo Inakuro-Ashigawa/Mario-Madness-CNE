@@ -208,8 +208,7 @@ function selectOption() {
 			FlxG.resetState();
 		case "Botplay":
             if (FlxG.save.data.ShowPsychUI) {
-                FlxG.save.data.botplayOption = !FlxG.save.data.botplayOption;
-                botplaytxt.alpha = FlxG.save.data.botplayOption ? 1 : 0;
+                FlxG.save.data.callLuigi = !FlxG.save.data.callLuigi;
             }
             //player.cpu = !player.cpu; Imma figure out why this doesn't work (Yes I have tried putting PlayState.player.cpu)
 		case "Exit":

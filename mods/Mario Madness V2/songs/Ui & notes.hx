@@ -28,6 +28,7 @@ public var timeBarBG:FlxSprite;
 public var timeBar:FlxBar;
 public var timeTxt:FlxText; 
 public var hudTxt:FlxText;
+public var luigiLogo:FlxSprite;
 var hudTxtTween:FlxTween;
 var ratingFC:String = "FC";
 public var botplayTxt:FlxText;
@@ -65,6 +66,10 @@ function create() {
     timeTxt.antialiasing = true;
     timeTxt.scrollFactor.set();
     timeTxt.alpha = 0;
+    if(FlxG.save.data.callLuigi)
+        timeTxt.color = 0xFF25cd49;
+    else
+        timeTxt.color = 0xFFF42626;
     timeTxt.borderColor = 0xFF000000;
     timeTxt.borderSize = 2;
     timeTxt.screenCenter(FlxAxes.X);
@@ -72,6 +77,10 @@ function create() {
     hudTxt = new FlxText(0, 685, FlxG.width, "Score: 0      Misses: 0      Rating: ?");
     hudTxt.setFormat(Paths.font("Mario2.ttf"), 15, 0xFFf42626, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     hudTxt.borderSize = 1.25;
+    if(FlxG.save.data.callLuigi)
+        hudTxt.color = 0xFF25cd49;
+    else
+        hudTxt.color = 0xFFF42626;
     hudTxt.antialiasing = true;
     hudTxt.scrollFactor.set();
     hudTxt.screenCenter(FlxAxes.X);
@@ -80,6 +89,10 @@ function create() {
     botplayTxt.setFormat(Paths.font("Mario2.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     botplayTxt.scrollFactor.set();
     botplayTxt.borderSize = 1.25;
+    if(FlxG.save.data.callLuigi)
+        botplayTxt.color = 0xFF25cd49;
+    else
+        botplayTxt.color = 0xFFF42626;
     botplayTxt.alpha = 0;
     botplayTxt.cameras = [camHUD];
 
@@ -97,6 +110,10 @@ function create() {
     if (FlxG.save.data.colouredBar) {
         timeBar.createFilledBar(0xFF000000, colouredBar);
     }
+    if(FlxG.save.data.callLuigi)
+        timeBar.createFilledBar(0xFF000000, 0xFF25cd49);
+    else
+        timeBar.createFilledBar(0xFF000000, 0xFFF42626);
     timeBar.numDivisions = 400;
     timeBar.alpha = 0;
     timeBar.value = Conductor.songPosition / Conductor.songDuration;
@@ -112,6 +129,35 @@ function create() {
     timeBar.cameras = [camHUD];
     timeBarBG.cameras = [camHUD];
     timeTxt.cameras = [camHUD];
+
+    var plus:String = '';
+    if(PlayState.SONG.meta.name == 'paranoia') plus = 'V';
+    //if(curStage == 'landstage') plus = 'GB';
+    //if(curStage == 'endstage') plus = 'End';
+    //if(curStage == 'somari') plus = 'S';
+
+    luigiLogo = new FlxSprite(400, timeBarBG.y + 55);
+    luigiLogo.loadGraphic(Paths.image('modstuff/luigi/luigi' + plus));
+    luigiLogo.scrollFactor.set();
+    luigiLogo.scale.set(0.3, 0.3);
+    luigiLogo.updateHitbox();
+    luigiLogo.screenCenter(FlxAxes.X);
+    luigiLogo.cameras = [camHUD];
+    luigiLogo.y = timeBarBG.y + 40;
+    luigiLogo.visible = FlxG.save.data.callLuigi;
+    add(luigiLogo);
+    if(PlayState.SONG.meta.name == 'paranoia'){
+        luigiLogo.antialiasing = false;
+        var thesize:Float = 4;
+        if(PlayState.SONG.meta.name == 'paranoia'){
+            thesize = 3.5;
+            for (strumLine in strumLines.members)
+                    luigiLogo.y = strumLine.y - 30;
+        } 
+        luigiLogo.scale.set(thesize, thesize);
+        luigiLogo.updateHitbox();
+        luigiLogo.x -= 50;
+    }
     PauseSubState.script = 'data/scripts/MMPause';
 
 }
@@ -183,9 +229,15 @@ function postCreate() {
 }
 
 function onNoteCreation(event) {
-    event.noteSprite = 'game/notes/Mario Madness/Mariodefault';
+    if(FlxG.save.data.callLuigi)
+        event.noteSprite = 'game/notes/Mario Madness/Luigidefault';
+    else
+        event.noteSprite = 'game/notes/Mario Madness/Mariodefault';
 }
 
 function onStrumCreation(event) {
-    event.sprite = 'game/notes/Mario Madness/Mariodefault';
+    if(FlxG.save.data.callLuigi)
+        event.sprite = 'game/notes/Mario Madness/Luigidefault';
+    else
+        event.sprite = 'game/notes/Mario Madness/Mariodefault';
 }
