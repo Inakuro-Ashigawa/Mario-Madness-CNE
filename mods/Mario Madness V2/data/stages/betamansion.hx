@@ -1,22 +1,57 @@
 import flixel.tweens.FlxTween.FlxTweenType;
-var angel:CustomShader = null;
 
 var camEST = new FlxCamera();
+
+importScript("data/modchart/Modchart");
 
 introLength = 0;
 function onCountdown(event) event.cancel(); 
 
+function onSongStart(){
+    cpuStrums.forEach(function(strums) strums.alpha = 1);
+    playerStrums.forEach(function(strums) strums.alpha = 0);
+    camHUD.alpha = 0;
+    camStrums.alpha = 0;
+    camNotes.alpha = 0;
+}
+
 function create(){
+    var dir = 'stages/Woodland-of-Lies/betamansion/';
     camEST.bgColor = 0;
     camEST.alpha = 1;
     FlxG.cameras.remove(camHUD, false);
     FlxG.cameras.add(camHUD, false);
     FlxG.cameras.add(camEST, false);
 
+    skybox = new FlxSprite(-1200, -800).loadGraphic(Paths.image(dir + 'Skybox'));
+    skybox.scrollFactor.set(0.2, 0.2);
+	skybox(1, skybox);
+
+    backBG = new FlxSprite(-1200, -800).loadGraphic(Paths.image(dir + 'BackBG'));
+    backBG.scrollFactor.set(0.8, 0.8);
+	insert(2, backBG);
+
+    fireL = new FlxSprite(-320, -630);
+    fireL.frames = Paths.getSparrowAtlas(dir + 'Alone_Fire');
+    fireL.animation.addByPrefix('idle', 'fire', 24);
+    insert(4, fireL);
+
+    fireR = new FlxSprite(1270, -630);
+    fireR.frames = Paths.getSparrowAtlas(dir + 'Alone_Fire');
+    fireR.animation.addByPrefix('idle', 'fire', 24);
+    fireR.flipX = true;
+    insert(5, fireR);
+
+    fireL.animation.play('idle', true);
+    fireR.animation.play('idle', true);
+
+    frontBG = new FlxSprite(-1200, -800).loadGraphic(Paths.image(dir + 'FrontBG'));
+	insert(6, frontBG);
+
     //health = 2;
 
     if(FlxG.save.data.flashingLights){
-        bfHang = new FlxSprite(700, -100).loadGraphic(Paths.image('modstuff/Beta_Bf_Hang'));
+        bfHang = new FlxSprite(700, -100);
         bfHang.alpha = 0;
         bfHang.frames = Paths.getSparrowAtlas('modstuff/Beta_Bf_Hang');
 	    bfHang.animation.addByPrefix('idle', "BFHang", 24);
@@ -24,11 +59,11 @@ function create(){
         add(bfHang);
     }
 
-    rainFall = new FlxSprite(-170, 50).loadGraphic(Paths.image('stages/Woodland-of-Lies/betamansion/old/Beta_Luigi_Rain_V1'));
+    rainFall = new FlxSprite(-170, 50);
     rainFall.alpha = 0;
     rainFall.scale.set(1.7, 1.7);
     rainFall.cameras = [camEST];
-    rainFall.frames = Paths.getSparrowAtlas('stages/Woodland-of-Lies/betamansion/old/Beta_Luigi_Rain_V1');
+    rainFall.frames = Paths.getSparrowAtlas( dir + 'old/Beta_Luigi_Rain_V1');
 	rainFall.animation.addByPrefix('idle', "RainLuigi", 24);
     rainFall.animation.play('idle', true);
     add(rainFall);
@@ -53,34 +88,27 @@ function create(){
     FlxTween.tween(strumLines.members[3].characters[0], {y: strumLines.members[3].characters[0].y + 40}, 2, {startDelay: 0.2, ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
 	FlxTween.tween(strumLines.members[3].characters[0], {x: strumLines.members[3].characters[0].x - 20}, 4, {startDelay: 0.2, ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
 
-    angel = new CustomShader("angel");
-    angel.data.pixel.value = [0.5, 0.5];
-    angel.data.stronk.value = [0, 0];
-    angel.data.iTime.value = [0.0];
-
     strumLines.members[2].characters[0].scale.set(0.2, 0.2);
 	strumLines.members[2].characters[0].scrollFactor.set(0.8, 0.8);
 	strumLines.members[2].characters[0].alpha = 0;
 	strumLines.members[2].characters[0].x = 310;
 	strumLines.members[2].characters[0].y = -360;
 
-    insert(2, strumLines.members[2].characters[0]);
-
-    //camGame.addShader(angel);
-    //camHUD.addShader(angel);
-}
-
-function update(elapsed){
-    angel.data.iTime.value = [Conductor.songPosition / 1000];
+    remove(boyfriend, false);
+    insert(10, boyfriend);
 }
 
 function beatHit(curBeat){
     switch(curBeat){
         case 2:
             FlxTween.tween(blackBarThingie, {alpha: 0.5}, 5);
+            playerStrums.forEach(function(strums) strums.alpha = 0);
         case 8:
             defaultCamZoom = 0.9;
-        
+            FlxTween.tween(camStrums, {alpha: 0.5}, 0.5);
+            FlxTween.tween(camNotes, {alpha: 0.5}, 0.5);
+            FlxTween.tween(camSustains, {alpha: 0.5}, 0.5);
+
         case 40:
             if(FlxG.save.data.flashingLights){
                 FlxG.camera.flash(FlxColor.WHITE, 1);
@@ -89,12 +117,20 @@ function beatHit(curBeat){
                 FlxTween.tween(bfHang, {alpha: 0}, 2, {ease: FlxEase.quadOut});
             }
             defaultCamZoom = 0.75;
+            FlxTween.tween(camStrums, {alpha: 1}, 1);
+            FlxTween.tween(camNotes, {alpha: 1}, 1);
+            FlxTween.tween(camSustains, {alpha: 1}, 1);
         case 41:
             FlxTween.tween(rainFall, {alpha: 0.6}, 5);
             FlxTween.tween(blackBarThingie, {alpha: 0}, 5);
         case 44:
             FlxTween.tween(boyfriend, {alpha: 0.9}, 2, {ease: FlxEase.quadOut});
             FlxTween.tween(strumLines.members[3].characters[0], {alpha: 0.9}, 2, {ease: FlxEase.quadOut});
+        case 48:
+            FlxTween.tween(camHUD, {alpha: 1}, 2, {ease: FlxEase.linear});
+            playerStrums.forEach(function(strums){
+                FlxTween.tween(strums, {alpha: 0.75}, 2, {ease: FlxEase.linear});
+            });
         case 112:
             defaultCamZoom = 0.6;
         case 120:
@@ -135,6 +171,7 @@ function beatHit(curBeat){
                 FlxG.camera.flash(FlxColor.WHITE, 1);
             }
             blackBarThingie.alpha = 0.5;
+            FlxTween.tween(camHUD, {alpha: 0}, 2);
         case 416:
             FlxTween.tween(strumLines.members[3].characters[0],      {alpha: 0}, 2.4);
 			FlxTween.tween(boyfriend, {alpha: 0}, 2.4);
@@ -179,9 +216,19 @@ function onEvent(e){
 		}
 }
 
+function onPostNoteCreation(_) {
+    if(_.strumLineID == 1){
+        _.note.alpha = 0.75;
+        if (_.note.isSustainNote){
+            _.note.alpha = 0.5;
+            _.note.angle = 40;
+        }
+    }
+}
+
 /*  Code for the rain:
 
-    rain = new FlxSprite(0, 0).loadGraphic(Paths.image('stages/Woodland-of-Lies/betamansion/gota'));
+    rain = new FlxSprite(0, 0);
     rain.frames = Paths.getSparrowAtlas('stages/Woodland-of-Lies/betamansion/gota');
 	rain.animation.addByPrefix('rain', 'rain', 12, true);
     rain.animation.play('rain');
@@ -192,6 +239,7 @@ function onEvent(e){
 
     insert(5, rain);
     FlxTween.tween(rain, {alpha: 0}, 2, {startDelay: 0.3, onComplete: function(twn:FlxTween){
-		rain.destroy();
+		remove(rain, false);
+        rain.destroy();
     }});
 */

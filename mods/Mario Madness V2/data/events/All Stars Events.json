@@ -1,0 +1,19 @@
+{
+    "params": [
+        {
+            "name": "Event Number\n(Look at songs/All Stars Events.txt for full list)",
+            "type": "String",
+            "defaultValue": ""
+        },
+        {
+            "name": "Value 1",
+            "type": "String",
+            "defaultValue": ""
+        },
+        {
+            "name": "Value 2",
+            "type": "String",
+            "defaultValue": ""
+        }
+    ]
+}

@@ -265,7 +265,6 @@ function beatHit(){
             insert(4, dad);
             insert(30, boyfriend);
             defaultCamZoom = 2;
-            FlxTween.tween(act2Sky, {x: act2Sky.x - 75}, 0.35, {ease: FlxEase.quadOut});
             act2Cam = true;
             remove(playerStrums.characters[1]);
         case 396:

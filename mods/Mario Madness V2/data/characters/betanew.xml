@@ -1,10 +1,10 @@
 <!DOCTYPE codename-engine-character>
 <character x="-170" y="40" sprite="Woodland-of-Lies/alone/Beta_Luigi_Assets" scale="1.2" camx="30" camy="50" icon="beta2">
 	<anim name="idle" anim="LuigiIdle" x="-135" y="-42" fps="24" loop="false"/>
-	<anim name="singDOWN" anim="LuigiDown" x="-110" y="-130" fps="24" loop="false"/>
-	<anim name="singLEFT" anim="LuigiLeft" x="-23" y="-49" fps="24" loop="false"/>
-	<anim name="singUP" anim="LuigiUp" x="16" y="-12" fps="24" loop="false"/>
-	<anim name="singRIGHT" anim="LuigiRight" x="-180" y="-73" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="LuigiDown" x="-112" y="-115" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="LuigiLeft" x="-41" y="-49" fps="24" loop="false"/>
+	<anim name="singUP" anim="LuigiUp" x="-8" y="-17" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="LuigiRight" x="-174" y="-68" fps="24" loop="false"/>
 	<anim name="idle-alt" anim="LuigiSitIdle" x="-149" y="-188" fps="24" loop="false"/>
 	<anim name="singRIGHT-alt" anim="LuigiSitRight" x="-149" y="-188" fps="24" loop="false"/>
 	<anim name="singDOWN-alt" anim="LuigiSitDown" x="-112" y="-191" fps="24" loop="false"/>
