@@ -114,21 +114,21 @@ function create() {
         timeBar.createFilledBar(0xFF000000, 0xFF25cd49);
     else
         timeBar.createFilledBar(0xFF000000, 0xFFF42626);
-    timeBar.numDivisions = 400;
-    timeBar.alpha = 0;
-    timeBar.value = Conductor.songPosition / Conductor.songDuration;
-    timeBar.unbounded = true;
-    add(timeBarBG);
-    add(timeBar);
-    add(timeTxt);
+        timeBar.numDivisions = 400;
+        timeBar.alpha = 0;
+        timeBar.value = Conductor.songPosition / Conductor.songDuration;
+        timeBar.unbounded = true;
+        add(timeBarBG);
+        add(timeBar);
+        add(timeTxt);
 
-    timeBarBG.x = timeBar.x - 4;
-    timeBarBG.y = timeBar.y - 4;
+        timeBarBG.x = timeBar.x - 4;
+        timeBarBG.y = timeBar.y - 4;
 
-    hudTxt.cameras = [camHUD];
-    timeBar.cameras = [camHUD];
-    timeBarBG.cameras = [camHUD];
-    timeTxt.cameras = [camHUD];
+        hudTxt.cameras = [camHUD];
+        timeBar.cameras = [camHUD];
+        timeBarBG.cameras = [camHUD];
+        timeTxt.cameras = [camHUD];
 
     var plus:String = '';
     if(PlayState.SONG.meta.name == 'paranoia') plus = 'V';
