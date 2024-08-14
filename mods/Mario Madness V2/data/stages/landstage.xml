@@ -1,14 +1,22 @@
 <!DOCTYPE codename-engine-stage>
-<stage folder="stages/HellishHights/gb/" zoom="0.8">
-	<sprite x="485" y="288" sprite="4" scale="6" name="cas"/>
-	<sprite x="123.25" y="-58.4" scale="4" scrollx="0.1" name="Mario_Phase2_Background_Assets_Static" antialiasing="false" scrolly="0.1" sprite="Mario_Phase2_Background_Assets_Static" alpha="0.2">
+<stage folder="stages/HellishHights/gb/" zoom="1">
+	<sprite antialiasing="false" x="461.5" y="250" sprite="4" scale="6" name="castle"/>
+	<sprite antialiasing="false" x="461.5" y="250" sprite="cas-bad" alpha="0" scale="6" name="castleEvil"/>
+	<sprite x="-455.5" y="-218.5" scale="4" name="staticBg" scrollx="0.1" antialiasing="false" scrolly="0.1" sprite="Mario_Phase2_Background_Assets_Static" alpha="0">
+		
+		
 		<anim x="0" loop="true" y="0" fps="24" anim="Estatica papu instancia 1" type="loop" name="idle"/>
+		
+	
 	</sprite>
-	<sprite x="429" antialiasing="false" y="256" sprite="3" scale="6" name="3"/>
+	<sprite x="429" antialiasing="false" sprite="3" y="256" scale="6" name="ocean"/>
+	<sprite x="429" antialiasing="false" sprite="3-bad" y="256" scale="6" alpha="0" name="oceanEvil"/>
 	<gf x="410" y="510"/>
-	<sprite x="418" y="274" sprite="2" scale="6" name="2"/>
-	<dad/>
-	<bf x="925" y="139.5"/>
+	<sprite antialiasing="false" x="422" y="158.5" sprite="2" scale="7" name="land"/>
+	<sprite antialiasing="false" x="422" y="158.5" sprite="2-bad" alpha="0" scale="7" name="landEvil"/>
+	<dad x="89.5" y="31"/>
+	<bf x="918" y="60.5"/>
 	<combo x="711" y="417"/>
-	<sprite scrolly="1.2" x="534.5" y="142.2" sprite="1" scale="6" scrollx="1.2" name="1"/>
+	<sprite scrolly="1.2" antialiasing="false" x="534.5" sprite="1" y="32.2" scale="6" name="blocks" scrollx="1.2"/>
+	<sprite x="534.5" y="32.2" scale="6" name="blocksEvil" scrollx="1.2" antialiasing="false" scrolly="1.2" sprite="1-bad" alpha="0"/>
 </stage>

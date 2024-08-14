@@ -1,6 +1,5 @@
-
-
 #pragma header
+#extension GL_EXT_gpu_shader4 : enable
 #define id vec2(0.,1.)
 #define k 1103515245U
 #define PI 3.141592653
@@ -51,13 +50,13 @@ void main() {
     
     //blur, from https://www.shadertoy.com/view/Xltfzj
     float directions = 16.0;
-    float quality = 3.0;
-    float size = 4.0;
+    float quality = 10.0;
+    float size = 1.1;
 
     vec2 radius = size / openfl_TextureSize;
     for(float d = 0.0; d < TAU; d += TAU / directions) {
         for(float i= 1.0 / quality; i <= 1.0; i += 1.0 / quality) {
-            col += flixel_texture2D(bitmap, uv + vec2(cos(d), sin(d)) * radius * i);	
+            col += flixel_texture2D(bitmap, uv + vec2(cos(d), sin(d)) * radius * i);    
         }
     }
     col /= quality * directions - 14.0;
