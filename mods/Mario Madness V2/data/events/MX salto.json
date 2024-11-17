@@ -1,0 +1,9 @@
+{
+	"params": [
+        {
+            "name": "HEHE",
+            "type": "String",
+            "defaultValue": "Script by Inakuro"
+        }
+	]
+}

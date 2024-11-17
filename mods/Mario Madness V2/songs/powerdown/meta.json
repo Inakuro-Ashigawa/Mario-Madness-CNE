@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 174,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -3009516,
+	"displayName": "PowerDown",
+	"icon": "MX",
+	"name": "powerdown",
+	"color": "#D21414"
+}

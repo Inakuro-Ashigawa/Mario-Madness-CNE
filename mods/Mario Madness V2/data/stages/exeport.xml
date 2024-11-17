@@ -1,0 +1,19 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/HellishHights/MX/" zoom="0.6">
+	<sprite x="-1920" y="-1680" sprite="1" alpha="0" name="fullbg"/>
+	<sprite x="-1250" y="-1100" sprite="MXBG1_2" name="BGGG"/>
+	<sprite x="-1920" y="-1680" sprite="2" alpha="0" name="bgfloor"/>
+	<gf x="400" y="100"/>
+	<combo x="774.5" y="249"/>
+	<sprite x="183" y="370" sprite="MX_BG_Assets_1" alpha="0" name="toad">
+		<anim x="0" loop="true" y="0" fps="24" anim="ToadBody" type="loop" name="ToadBody"/>
+	</sprite>
+	<dad x ="100" y="100"/>
+	<sprite x="1763" y="-170" sprite="MX_BG_Assets_1" alpha="0" name="luigiempa"/>
+	<sprite x="1383" y="360" sprite="MX_BG_Assets_1" alpha="0" name="luigibody">
+		<anim x="0" loop="true" y="0" fps="24" anim="Lucasody" type="loop" name="Lucasody"/>
+	</sprite>
+	<bf x="1170" y="140"/>
+	<sprite x="-1250" y="-1100" sprite="MXBG1_3" name="MXBG1_3"/>
+	<sprite x="-1920" y="-1680" sprite="3" name="shadowbg"/>
+</stage>
