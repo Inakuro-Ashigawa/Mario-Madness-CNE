@@ -1,19 +1,32 @@
 <!DOCTYPE codename-engine-stage>
 <stage folder="stages/HellishHights/MX/" zoom="0.6">
-	<sprite x="-1920" y="-1680" sprite="1" alpha="0" name="fullbg"/>
-	<sprite x="-1250" y="-1100" sprite="MXBG1_2" name="BGGG"/>
-	<sprite x="-1920" y="-1680" sprite="2" alpha="0" name="bgfloor"/>
-	<gf x="400" y="100"/>
-	<combo x="774.5" y="249"/>
-	<sprite x="183" y="370" sprite="MX_BG_Assets_1" alpha="0" name="toad">
-		<anim x="0" loop="true" y="0" fps="24" anim="ToadBody" type="loop" name="ToadBody"/>
+	<sprite x="-1920" sprite="1" y="-1680" alpha="0" name="fullbg"/>
+	<sprite x="-1250" name="BGGG" sprite="MXBG1_2" y="-1100"/>
+	<sprite x="294" y="-319" sprite="MX_BG_Assets_2" alpha="0" scrollx="0.8" name="creppyleaf">
+		<anim x="0" loop="false" y="0" fps="24" anim="BushIdle" type="beat" name="idle"/>
+		<anim x="0" loop="false" y="0" fps="24" anim="BushBlink" type="beat" name="blink"/>
 	</sprite>
-	<dad x ="100" y="100"/>
-	<sprite x="1763" y="-170" sprite="MX_BG_Assets_1" alpha="0" name="luigiempa"/>
-	<sprite x="1383" y="360" sprite="MX_BG_Assets_1" alpha="0" name="luigibody">
+	<sprite scrolly="0.6" x="-400" y="-1233" sprite="MX_BG_Assets_2" alpha="0" type="none" scrollx="0.6" name="creepyCloud">
+		<anim x="0" loop="false" y="0" fps="24" anim="Cloud" type="beat" name="idle"/>
+	</sprite>
+	<sprite x="-1920" sprite="2" y="-1680" alpha="0" name="bgfloor"/>
+	<sprite x="183" sprite="MX_BG_Assets_1" y="370" alpha="0" name="toad">
+		
+		
+		<anim loop="true" x="0" anim="ToadBody" fps="24" y="0" type="loop" name="ToadBody"/>
+		
+	
+	</sprite>
+	<gf x="717.5" y="-66"/>
+	<combo x="712.5" y="106"/>
+	<dad x="-234" y="211"/>
+	<sprite x="1763" sprite="MX_BG_Assets_1" y="-170" alpha="0" name="luigiempa">
+		<anim x="0" loop="true" y="0" fps="24" anim="LucasHead" type="loop" name="LucasHead"/>
+	</sprite>
+	<sprite x="1383" y="360" sprite="MX_BG_Assets_1" alpha="0" name="LuCasBody">
 		<anim x="0" loop="true" y="0" fps="24" anim="Lucasody" type="loop" name="Lucasody"/>
 	</sprite>
 	<bf x="1170" y="140"/>
-	<sprite x="-1250" y="-1100" sprite="MXBG1_3" name="MXBG1_3"/>
-	<sprite x="-1920" y="-1680" sprite="3" name="shadowbg"/>
+	<sprite x="-1250" name="MXBG1_3" sprite="MXBG1_3" y="-1100"/>
+	<sprite x="-1920" name="shadowbg" sprite="3" y="-1680"/>
 </stage>

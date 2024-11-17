@@ -1,12 +1,16 @@
 import flixel.util.FlxTimer;
 
 var dodged:Bool = false;
-var timerdone:Bool = true;
+public var timerdone,canJump:Bool = true;
 public var camEST = new FlxCamera();
 var imgwarb,bbfjump,imgwar:FlxSprite;
 var enemyY:Float;
 
-
+function events(shit){
+    if (shit == "far"){
+        canJump = false;
+    }
+}
 function create() {
     var estatica = new FlxSprite();
     estatica.frames = Paths.getSparrowAtlas('modstuff/Mario_static');
@@ -54,13 +58,15 @@ function create() {
     FlxG.cameras.add(camEST, false);
 }
 function bfJump() {
-    if (!timerdone) return;
+    if (!timerdone && canJump) return;
     dodged = true;
 
     boyfriend.visible = false;
     bbfjump.visible = true;
     bbfjump.animation.play('jump');
-    FlxG.sound.play(Paths.sound('bfjump'));
+    FlxG.sound.play(Paths.sound('bfjump'), 2);
+    inst.volume = .4;
+    vocals.volume = .3;
 
 
     new FlxTimer().start(0.1, function(tmr:FlxTimer) {
@@ -72,6 +78,7 @@ function bfJump() {
                     onComplete: function(twn:FlxTween) {
                         bbfjump.x += 10;
                         bbfjump.y += 100;
+                        dodged = false;
                         bbfjump.animation.play('jumpend');
                     }
                 });
@@ -84,6 +91,8 @@ function bfJump() {
         bbfjump.visible = false;
         bbfjump.y -= 270;
         bbfjump.x -= 10;
+        inst.volume = 1;
+        vocals.volume = 1;
     });
 }
 function postUpdate() {
@@ -125,10 +134,12 @@ function onEvent(eventEvent) {
             FlxG.sound.play(Paths.sound('warningmx'));
 
             var numberjump:Float = 800;
+            dad.playAnim('singUP', true);
             FlxTween.tween(dad, {y: enemyY - numberjump}, 0.24, {
                 startDelay: 0.24,
                 ease: FlxEase.quadOut,
                 onComplete: function(twn:FlxTween) {
+                    dad.playAnim('singDOWN', true);
                     FlxTween.tween(dad, {y: enemyY}, 0.24, {
                         ease: FlxEase.quadIn,
                         onComplete: function(twn:FlxTween) {
@@ -136,7 +147,7 @@ function onEvent(eventEvent) {
                             if (!dodged) {
                                 boyfriend.playAnim('hurt', true);
                                 var newhealth:Float = health - 1.2;
-                                FlxTween.tween(this, {health: newhealth}, 0.2, {ease: FlxEase.quadOut});
+                                //FlxTween.tween(this, {health: newhealth}, 0.2, {ease: FlxEase.quadOut});
                             }
                         }
                     });
