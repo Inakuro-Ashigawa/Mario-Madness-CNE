@@ -4,11 +4,12 @@ import flixel.text.FlxTextFormat;
 var autor:String = "";
 var porter:String = "";
 var camSong = new FlxCamera();
-
 var gbcolor:FlxColor = 0xFFF42626;
+var txtcolor:FlxColor = FlxColor.RED;
 var format = new FlxTextFormat(0x000000, false, false, gbcolor);
 
 function create(){
+
     titleText = new FlxText(400, 350.4, 0, PlayState.SONG.meta.displayName, 42);
 	titleText.setFormat(Paths.font("mariones.ttf"), 42, FlxColor.BLACK, "center", FlxTextBorderStyle.OUTLINE, gbcolor);
 	titleText.borderSize = 3;
@@ -16,7 +17,7 @@ function create(){
     if(FlxG.save.data.callLuigi)
         titleText.borderColor = 0xFF25cd49;
     else
-        titleText.borderColor = FlxColor.RED;
+        titleText.borderColor = txtcolor;
     titleText.cameras = [camSong];
 	titleText.screenCenter(FlxAxes.X);
 	titleText.alpha = 0;
@@ -28,7 +29,7 @@ function create(){
     if(FlxG.save.data.callLuigi)
         autorText.borderColor = 0xFF25cd49;
     else
-        autorText.borderColor = FlxColor.RED;
+        autorText.borderColor = txtcolor;
     autorText.cameras = [camSong];
     autorText.screenCenter(FlxAxes.X);
 	autorText.alpha = 0;
@@ -39,7 +40,7 @@ function create(){
     if(FlxG.save.data.callLuigi)
         porterText.borderColor = 0xFF25cd49;
     else
-        porterText.borderColor = FlxColor.RED;
+        porterText.borderColor = txtcolor;
 	porterText.borderSize += 2;
     porterText.cameras = [camSong];
     porterText.screenCenter(FlxAxes.X);
