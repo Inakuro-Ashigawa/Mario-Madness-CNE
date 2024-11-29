@@ -2,7 +2,7 @@
 	"song": {
 		"songName": "No Party",
 		"songId": "No Party",
-		"player1": "djbf",
+		"player1": "DJ/djbf",
 		"notes": [
 			{
 				"endTime": 1920,
@@ -5225,7 +5225,7 @@
 				"mustHitSection": true
 			}
 		],
-		"player2": "djmario",
+		"player2": "DJ/djmario",
 		"player3": "gf",
 		"offset": 0,
 		"song": "No Party",

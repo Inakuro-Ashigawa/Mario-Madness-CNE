@@ -5,7 +5,8 @@
 	"beatsPerMesure": 4,
 	"bpm": 145,
 	"difficulties": [
-		"HARD"
+		"hard",
+		"lyric"
 	],
 	"needsVoices": true,
 	"parsedColor": -65536,

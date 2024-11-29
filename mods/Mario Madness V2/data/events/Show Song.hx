@@ -97,7 +97,28 @@ function update(){
         porterText.y = autorText.y + 55;
     }
 }
+function postCreate() {
+    for (event in events) {
+        if (event.name == 'Show Song') {
+            window.title = "Friday Night Funkin': Mario's Madness | ";
+            for (i in 0...PlayState.SONG.meta.displayName.length) {
+                window.title = window.title + "?";
+            }
 
+            window.title = window.title + " | ";
+
+            for (i in 0...event.params[1].length) {
+                window.title = window.title + "?";
+            }
+
+            window.title = window.title + " | ";
+
+            for (i in 0...event.params[2].length) {
+                window.title = window.title + "?";
+            }
+	    }
+    }
+}
 function onEvent(_){
     if (_.event.name == "Show Song" && _.event.params[0]){
         autorText.text = _.event.params[1];

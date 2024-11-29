@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 150,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -7352296,
+	"displayName": "Abandoned",
+	"icon": "wdwluigi",
+	"name": "abandoned",
+	"color": "#8FD018"
+}

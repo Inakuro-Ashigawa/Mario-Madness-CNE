@@ -1,6 +1,6 @@
 import flixel.util.FlxTimer;
 
-var dodged:Bool = false;
+var canDodge:Bool = true;
 public var timerdone,canJump:Bool = true;
 public var camEST = new FlxCamera();
 var imgwarb,bbfjump,imgwar:FlxSprite;
@@ -18,7 +18,7 @@ function create() {
     estatica.animation.play('idle');
     estatica.antialiasing = false;
     estatica.cameras = [camEST];
-    estatica.alpha = 0.05;
+    estatica.alpha = 0.1;
     estatica.updateHitbox();
     estatica.screenCenter();
     add(estatica);
@@ -57,16 +57,16 @@ function create() {
     FlxG.cameras.add(camHUD, false);
     FlxG.cameras.add(camEST, false);
 }
+var jumpSound = FlxG.sound.play(Paths.sound('bfjump'), 1);
 function bfJump() {
-    if (!timerdone && canJump) return;
-    dodged = true;
+    if (!canDodge) return;
+    canDodge = false;
 
     boyfriend.visible = false;
     bbfjump.visible = true;
     bbfjump.animation.play('jump');
-    FlxG.sound.play(Paths.sound('bfjump'), 2);
-    inst.volume = .4;
-    vocals.volume = .3;
+    jumpSound.play();
+    jumpSound.amplitude = 10;
 
 
     new FlxTimer().start(0.1, function(tmr:FlxTimer) {
@@ -78,7 +78,6 @@ function bfJump() {
                     onComplete: function(twn:FlxTween) {
                         bbfjump.x += 10;
                         bbfjump.y += 100;
-                        dodged = false;
                         bbfjump.animation.play('jumpend');
                     }
                 });
@@ -93,6 +92,7 @@ function bfJump() {
         bbfjump.x -= 10;
         inst.volume = 1;
         vocals.volume = 1;
+        canDodge = true;
     });
 }
 function postUpdate() {
@@ -144,10 +144,10 @@ function onEvent(eventEvent) {
                         ease: FlxEase.quadIn,
                         onComplete: function(twn:FlxTween) {
                             camGame.shake(0.03, 0.2);
-                            if (!dodged) {
+                            if (canDodge) {
                                 boyfriend.playAnim('hurt', true);
                                 var newhealth:Float = health - 1.2;
-                                //FlxTween.tween(this, {health: newhealth}, 0.2, {ease: FlxEase.quadOut});
+                                FlxTween.tween(this, {health: newhealth}, 0.2, {ease: FlxEase.quadOut});
                             }
                         }
                     });

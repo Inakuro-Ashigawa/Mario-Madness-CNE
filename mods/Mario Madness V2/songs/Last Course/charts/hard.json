@@ -4236,7 +4236,7 @@
 			"visible": true,
 			"type": 0,
 			"characters": [
-				"Turmoil"
+				"course/Turmoil"
 			],
 			"strumPos": [
 				96,
@@ -7623,7 +7623,7 @@
 			"visible": true,
 			"type": 1,
 			"characters": [
-				"BF_Goomba"
+				"course/BF_Goomba"
 			],
 			"strumPos": [
 				736,

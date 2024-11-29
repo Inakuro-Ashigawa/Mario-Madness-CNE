@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 180,
+	"difficulties": [
+		"hard"
+	],
+	"needsVoices": true,
+	"parsedColor": -15577578,
+	"displayName": "Thalassophobia",
+	"icon": "real",
+	"name": "thalassophobia",
+	"color": "#124E16"
+}

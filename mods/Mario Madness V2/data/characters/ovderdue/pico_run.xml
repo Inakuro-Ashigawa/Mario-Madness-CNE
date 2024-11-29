@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-character>
+<character x="-30" y="230" sprite="HellishHights/overdue/Too_Late_Pico_FINALSEQUENCE_assets" flipX="true" camx="-140" camy="150" isPlayer="true" icon="pico" holdTime="6.1" leftArm="(x: 0 | y: 410 | w: 552 | h: 258 | visible: true | velocity: (x: 0 | y: 0))" legs="(x: -30 | y: 230 | w: 552 | h: 258 | visible: true | velocity: (x: 0 | y: 0))">
+	<anim name="idle" anim="TopIdle" x="0" y="0" fps="24" loop="true"/>
+	<anim name="singUP" anim="TopUpFront" x="-95" y="30" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="TopDown" x="-85" y="45" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="TopLeftFront" x="170" y="11" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="TopRightFront" x="-146" y="-9" fps="24" loop="false"/>
+	<anim name="dialog1" anim="TopDialgoue" x="0" y="0" fps="24" loop="false"/>
+</character>

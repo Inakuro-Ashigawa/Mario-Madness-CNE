@@ -90,12 +90,12 @@ var curButton:FlxSprite = null;
 
 var menuItems:FlxTypedGroup<FlxSprite>;
 var menuItems = new FlxTypedGroup();
+var menuGroups:FlxTypedSpriteGroup;
+
 
 var cornerOffset:NumTween;
 
-var stars:FlxTypedGroup<FlxSprite>;
-var stars = new FlxTypedGroup();
-var starData:Array = [];
+var stars:FlxTypedSpriteGroup;
 
 var bloom:BloomShader;
 var ntsc:NTSCGlitch;
@@ -108,9 +108,13 @@ var beat:Bool = false;
 
 var lerpCamZoom:Bool = false;
 var camZoomMulti:Float = 1;
+var starData:Array<Bool> = [FlxG.save.data.storySave = 1, FlxG.save.data.storySave = 6, FlxG.save.data.storySave = 7, FlxG.save.data.storySave = 8];
 
 function create() {
 
+
+   stars = new FlxTypedSpriteGroup();
+   menuGroups = new FlxTypedSpriteGroup();
 
     if(FlxG.sound.music == null){
         FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -123,14 +127,13 @@ function create() {
     }
     persistentUpdate = persistentDraw = true;
 
-
-    menuInfo[1].choices.insert(1, "Freeplay");
-    menuLevelPostions[1][0].x -= 149.75;
+    if(FlxG.save.data.storySave > 1){
+    	menuInfo[1].choices.insert(1, "Freeplay");
+    	menuLevelPostions[1][0].x -= 149.75;
     
-    menuInfo[1].choices.insert(1, "WarpZone");
-    menuLevelPostions[1][0].x -= 149.75;
-
-
+    	menuInfo[1].choices.insert(1, "WarpZone");
+    	menuLevelPostions[1][0].x -= 149.75;
+    }
 
     fondo11 = new FlxBackdrop(Paths.image(('menus/mainmenu/bgs/bg1')), FlxAxes.X);
     add(fondo11);
@@ -254,6 +257,42 @@ function create() {
 				}
 			}
 		});
+                add(stars);
+		var unlocked:Int = 0;
+
+		for (i in 0...starData.length) {
+			var star:FlxSprite = new FlxSprite();
+			star.frames = Paths.getSparrowAtlas("menus/mainmenu/MM_Menu_Assets");
+			star.animation.addByPrefix("idle", "Star", 30, true);
+			star.animation.play("idle");
+
+			star.updateHitbox();
+			star.y += star.height * i;
+			stars.x -= star.width;
+			star.alpha = 0;
+			star.visible = false;
+
+
+			if (starData[i]) {
+				star.visible = true;
+				star.ID = i;
+
+				FlxTween.tween(star, {x: Math.PI, alpha: 0.9}, 1, {
+					ease: FlxEase.circOut,
+					startDelay: 0.15 * unlocked,
+					onComplete: (_) -> {
+						FlxTween.tween(star.offset, {y: 7.5}, 1.5, {type: 4, loopDelay: 0.25});
+					}
+				});
+				unlocked++;
+			}
+
+			star.scrollFactor.set(0.6, 1);
+			stars.add(star);
+		}
+
+		stars.screenCenter(FlxAxes.Y);
+
 		submenu = new FlxSprite(50, 570);
 		submenu.frames = Paths.getSparrowAtlas('modstuff/cuadro');
 
@@ -273,7 +312,7 @@ function create() {
 
         menuGroups = [for (info in menuInfo) info.group];
 
-		changeItem();
+		changeItem(-1);
 
 		FlxG.camera.zoom += 0.1;
 
@@ -526,11 +565,9 @@ function update(elapsed:Float) {
 						case "WarpZone":
 							new FlxTimer().start(0.4, function(tmr:FlxTimer)
 							{
-                                FlxG.switchState(new ModState("extras/PartyState"));
+                                FlxG.switchState(new ModState("WarpState"));
 							});
-                        
-                        //dont even think about it- inakuro
-						case "Freeplay":
+                      						case "Freeplay":
 							new FlxTimer().start(0.4, function(tmr:FlxTimer) { 
                                 FlxG.switchState(new ModState("MM/MMFreeplay"));
                             });

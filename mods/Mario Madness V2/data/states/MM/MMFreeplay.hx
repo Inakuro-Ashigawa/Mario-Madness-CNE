@@ -15,7 +15,6 @@ import StringTools;
 
 
 var options:Array<String> = ['Mainweek', 'Island', 'Woodland', 'Cosmos', 'Heights', 'Classified', 'Legacy', 'Extra'];
-var canciones = [];
 
 var grpOptions:FlxTypedGroup<FlxSprite>;
 
@@ -36,8 +35,32 @@ var imagePortrait:FlxSprite;
 var showAnim:Bool = false;
 
 function create(){
+
+FlxG.sound.music.volume = 1;
+FlxG.sound.music.play();
+
     FlxG.mouse.visible = true;
     DiscordUtil.changePresence('In Freeplay', "Marios Madness Codename Port");
+
+    bgFP = new FlxSprite(0, 0).loadGraphic(Paths.image('modstuff/freeplay/HUD_Freeplay_2'));
+    bgFP.scale.set(1.4, 1.4);
+    bgFP.updateHitbox();
+    bgFP.screenCenter();
+    bgFP.alpha = 0;
+    bgFP.scrollFactor.set(0, 0);
+    bgFP.color = 0x00FF0000;
+    add(bgFP);
+
+    estatica = new FlxSprite();
+    estatica.frames = Paths.getSparrowAtlas('modstuff/estatica_uwu');
+    estatica.animation.addByPrefix('idle', "Estatica papu", 15);
+    estatica.animation.play('idle');
+    estatica.antialiasing = false;
+    estatica.color = FlxColor.RED;
+    estatica.alpha = 0.7;
+    estatica.scrollFactor.set();
+    estatica.updateHitbox();
+    add(estatica);
 
     grpOptions = new FlxTypedGroup();
     add(grpOptions);
@@ -54,49 +77,49 @@ function create(){
     freeplaytext.alpha = 0; 
     freeplaytext.scale.set(0,0);
     FlxTween.tween(freeplaytext, {'scale.x': 1, 'scale.y': 1, alpha: 1}, .35, {ease: FlxEase.circInOut, startDelay: .2});
+for (i in 0...options.length){
+    var imagePortrait = new FlxSprite();
+    imagePortrait.frames = Paths.getSparrowAtlas('modstuff/freeplay/Freeplay_Assets');
+    imagePortrait.animation.addByPrefix(options[i], options[i], 24, true);
+    imagePortrait.animation.play(options[i]);
+    imagePortrait.updateHitbox();
+    imagePortrait.ID = i;
+    grpOptions.add(imagePortrait);
 
-    for (i in 0...options.length)
-		{
-			imagePortrait = new FlxSprite();
-			imagePortrait.frames = Paths.getSparrowAtlas('modstuff/freeplay/Freeplay_Assets');
-			imagePortrait.animation.addByPrefix(options[i], options[i], 24, true);
-			imagePortrait.animation.play(options[i]);
-			imagePortrait.updateHitbox();
-			imagePortrait.ID = i;
-			grpOptions.add(imagePortrait);
-
-            switch(options){
-				case 'Mainweek':
-					imagePortrait.setPosition(56.55, 130.5);
-				
-				case 'Island':
-					imagePortrait.setPosition(257.35, 130.5);
-
-				case 'Woodland':
-					imagePortrait.setPosition(442.65, 130.5);
-
-				case 'Cosmos':
-					imagePortrait.setPosition(638.55, 130.5);
-
-				case 'Heights':
-					imagePortrait.setPosition(833.8, 130.5);
-
-				case 'Classified':
-					imagePortrait.setPosition(1028, 130.5);
-
-				case 'Extra':
-					imagePortrait.setPosition(736.35, 472.35);
-
-				case 'Legacy':
-					imagePortrait.setPosition(268.70, 472.35);
-            }
-			imagePortrait.x -= 25; 
-            imagePortrait.y -= 15;
-            (new FlxTimer()).start(.35 + (0.05 * grpOptions.members.length), function (t) showAnim = true);
-        }
+    // Using if-else statements instead of switch
+    if (options[i] == 'Mainweek') {
+        imagePortrait.setPosition(56.55, 130.5);
+    } else if (options[i] == 'Island') {
+        imagePortrait.setPosition(257.35, 130.5);
+    } else if (options[i] == 'Woodland') {
+        imagePortrait.setPosition(442.65, 130.5);
+    } else if (options[i] == 'Cosmos') {
+        imagePortrait.setPosition(638.55, 130.5);
+    } else if (options[i] == 'Heights') {
+        imagePortrait.setPosition(833.8, 130.5);
+    } else if (options[i] == 'Classified') {
+        imagePortrait.setPosition(1028, 130.5);
+    } else if (options[i] == 'Extra') {
+        imagePortrait.setPosition(736.35, 472.35);
+    } else if (options[i] == 'Legacy') {
+        imagePortrait.setPosition(268.70, 472.35);
     }
+
+    // Adjust position slightly for x and y offsets
+    imagePortrait.x -= 25;
+    imagePortrait.y -= 15;
+
+    // Start a timer to show animation after a delay
+    (new FlxTimer()).start(0.35 + (0.05 * grpOptions.members.length), function(t) {
+        showAnim = true;
+    });
+ }
+}
+
 var tottalTime:Float = 0;
 function update(elapsed){
+ if(controls.BACK) FlxG.switchState(new MainMenuState());
+
     tottalTime += elapsed;
 
     grpOptions.forEach(function(spr:FlxSprite)
@@ -192,7 +215,7 @@ function goToState()
                     ['Golden Land', 'golden-land', '28'],
                     ['No Party',		'no-party',         '30'],
                     ['Paranoia', 'paranoia', '41'],
-                    ['Overdue',		'overdue',         '35'],
+                    ['Overdue',		'overdue', '35'],
                     ['Powerdown', 'powerdown', '27'],
                     ['Demise', 'demise', '23']
                 ];
@@ -218,12 +241,8 @@ function goToState()
 
             case 'Extra':
                 canciones = [
-                    ['Unbeatable', 'unbeatable', '14'],
-                    ['Dictator (Original)', 		'dictator-old', 	'42'],
-                    ['No Party (Original)', 'no-party-old', '36'],
-                    ['Overdue (Original)', 'overdue-old', '37'],
-                    ['Time Out (Demise Original)', 'demise-old', '40'],
-                    ['All Stars Act 1 (Original)', 'all-stars-old', '38']
+                    ["Starman Slaughter  w/Lyrics", 'starman-slaughter', '34'],
+                    ["Paranoia w/Lyrics", 'paranoia', '29']
                 ];				
         }
         openSubState(new ModSubState('MM/MMFreeplaySub'));

@@ -79,6 +79,7 @@ function events(shit){
         turnevil.alpha = 1;
         dad.alpha = boyfriend.alpha = gf.alpha = BGGG.alpha = MXBG1_3.alpha = 0;
         turnevil.animation.play('laugh');
+        muymalo = 2;
     }
     if (shit == "far"){
         FlxTween.tween(blackBarThingie, {alpha: 1}, 1, {onComplete: function(twn:FlxTween){
@@ -90,7 +91,7 @@ function events(shit){
                 new FlxTimer().start(0.375, function(tmr:FlxTimer){
                     mxLaughNEW.animation.play('freddyfazbear');
                 });
-                new FlxTimer().start(3.5, function(tmr:FlxTimer){
+                new FlxTimer().start(3.3, function(tmr:FlxTimer){
                     midsongVid.play();
                     midsongVid.alpha = 1;
                 });
@@ -98,6 +99,7 @@ function events(shit){
                     remove(midsongVid);
                     blackBarThingie.alpha = mxLaughNEW.alpha = gf.alpha = 0;
                     FlxG.camera.flash(FlxColor.RED, 0.5);
+                    muymalo = 3;
                 });
             }
         });

@@ -1,7 +1,13 @@
 <!DOCTYPE codename-engine-stage>
-<stage folder="stages/" zoom=".3">
-	<dad x="400" y="100"/>
+<stage folder="stages/ContentCosmos/cityout/" zoom="0.9">
+	<sprite scrolly="0.8" x="-200" y="-1000" sprite="skyL" scrollx="0.7" name="skyL"/>
+	<sprite scrolly="0.8" x="400" y="-200" sprite="buildings far" scrollx="0.7" name="buildingsfar"/>
+	<sprite x="600" y="100" sprite="road plus building" scrollx="0.8" name="road"/>
+	<sprite scrolly="0.8" x="800" y="-500" sprite="corner sky overlay" scrollx="0.8" name="lightsky"/>
+	<sprite x="-950" y="-450" sprite="buildingSide" name="buildingSide"/>
 	<bf x="0" y="140"/>
-	<gf x="700" y="90"/>	
-	<combo/>
+	<dad x="400" y="100"/>
+	<gf x="700" y="90"/>
+	<combo x="-157.5" y="215"/>
+	<sprite scrolly="1.2" x="-800" y="-550" sprite="Overlay All" scrollx="1.2" name="lightall"/>
 </stage>

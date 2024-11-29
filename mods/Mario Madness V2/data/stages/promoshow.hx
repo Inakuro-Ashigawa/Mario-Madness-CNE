@@ -75,6 +75,8 @@ function create(){
     stanlines.animation.addByIndices('line6', 'lines', [5], "", 24, true);
     stanlines.animation.addByIndices('line7', 'lines', [6], "", 24, true);
     stanlines.animation.addByIndices('line8', 'lines', [7], "", 24, true);
+    stanlines.cameras = [camEst];
+    add(stanlines);
 
     bgLuigi.alpha = promoBGSad.alpha = darkFloor.alpha = stanlines.alpha = bgPeach.alpha = 0;
 }
@@ -100,6 +102,10 @@ function events(event){
         {
             blackBarThingie.alpha = 1;
             camHUD.alpha = 0;
+
+            for (i in cpuStrums.members){
+                FlxTween.tween(i, {alpha: i.alpha - 1}, .5, {ease: FlxEase.circOut});
+            }
         });
     }
 }
@@ -109,13 +115,6 @@ function back(){
 
     defaultCamZoom = 0.7;
 
-    add(stanlines);
-    stanlines.alpha = 0;
-
-    if (health > 1)
-    {
-        health = 1;
-    }
 
     dad.x = 697;
     dad.y = 195;

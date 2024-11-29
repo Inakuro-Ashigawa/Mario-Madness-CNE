@@ -13,6 +13,21 @@ function onCameraMove(e) if(cancelCameraMove) e.cancel();
 
 function create(){
 
+    blackBarThingie = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+    blackBarThingie.setGraphicSize(Std.int(blackBarThingie.width * 10));
+    blackBarThingie.alpha = 1;
+    blackBarThingie.cameras = [camEst];
+    add(blackBarThingie);
+
+    startbf = new FlxSprite().loadGraphic(Paths.image('modstuff/hatestart'));
+    startbf.setGraphicSize(Std.int(startbf.width * 3));
+    startbf.antialiasing = false;
+    startbf.cameras = [camEst];
+    startbf.alpha = 0;
+    startbf.updateHitbox();
+    startbf.screenCenter();
+    add(startbf);
+    
     remove(gf);
     remove(boyfriend);
 
@@ -166,20 +181,4 @@ function events(eventName){
                             {
                                 bfcape.alpha = 1;
                                 bfcape.x = 0;
-                            });
-                    }});
-            }});
-        
-                
-            new FlxTimer().start((7 * (1 / (Conductor.bpm / 60))), function(tmr:FlxTimer)
-                {
-                    dad.animation.play('hand', true);
-                    dad.setPosition(-1200, 500);
-                    dad.angle = 0;
-                    FlxTween.tween(dad, {y: 800}, 2, {startDelay: 0.3, onComplete: function(twn:FlxTween)
-                        {
-                            dad.visible = false;
-                        }});
-                });
-    }
-}
+                     

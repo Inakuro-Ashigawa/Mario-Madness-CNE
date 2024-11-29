@@ -365,7 +365,6 @@ function preGfWindow(){
                 hideTaskbar();
                 if (FlxG.save.data.virtualApps) prevHidden = hideWindows(window.title);
                 if (FlxG.save.data.virtualWallpaper && !FlxG.save.data.virtualBetter){
-                    setWallpaper(realPath);
                     trace(realPath);
                 }
             }

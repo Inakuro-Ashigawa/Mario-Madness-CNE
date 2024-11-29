@@ -79,6 +79,10 @@ var screenText:FlxText;
 var hubDots:FlxTypedGroup<FlxSprite>;
 var hubDots = new FlxTypedGroup();
 
+
+var CRT:CustomShader = null;
+var world:CustomShader = null;
+
 function create()
 	{
 		#if desktop
@@ -90,7 +94,17 @@ function create()
 		var backbg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(blackScreen);
 
-        FlxG.sound.music.stop();
+    	CRT = new CustomShader("VCR");
+		CRT.distortionOn = false;
+		CRT.vignetteMoving = false;
+		CRT.glitchModifier = 0;
+		//camera.addShader(CRT);
+
+		world = new CustomShader("MosaicShader");
+		world.data.uBlocksize.value = [.7, .7];
+		camera.addShader(world);
+
+		FlxG.sound.music.stop();
 
 		bg = new FlxSprite(0, 0);
 		bg.frames = Paths.getSparrowAtlas('warpzone/0/water_hub');
@@ -284,8 +298,11 @@ function create()
 			FlxG.sound.music.fadeIn(1, 0, 0.5);
 		}
     }
+var zero = 0;
     function update(elapsed:Float)
     {
+        zero += elapsed;
+	CRT.iTime = zero;
 
                 if (controls.BACK)
 					{
@@ -297,7 +314,7 @@ function create()
 
                 if (quieto)
                 {
-                    if (controls.ACCEPT)goToWorld();
+                    if (controls.ACCEPT) goToWorld();
     
                     if (FlxG.keys.justPressed.LEFT)
                     {
@@ -394,4 +411,9 @@ function animStart(nextDir:Int, lastDir:Float, curWorld:Float, pibe:FlxSprite, i
                 theTweenX = FlxTween.tween(pibe, {x: x}, 0.8);
             
     }
+}
+function goToWorld(){
+ if(curSelected == 1){
+    FlxG.switchState(new ModState("WarpWorlds/Irregularity Isle"));      
+ }
 }

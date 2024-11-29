@@ -6,9 +6,11 @@ import funkin.backend.utils.NdllUtil;
 import sys.io.File;
 
 static var initialized:Bool = false;
-
 static var prevHidden = [];
 static var prevWallpaper = [];
+public static  var canciones = [];
+public static var muymalo:Int = 1;
+public static var isWarp:Bool = false;
 
 // BIIIG thanks to ne_eo for programming all the functions for this ndll, this would not been possible without him <3
 // code for the ndll: https://github.com/APurples/Mario-Madness-V2-CNE-ndlls
@@ -39,6 +41,7 @@ static var fsY:Int = Capabilities.screenResolutionY;
 static var resizex:Int = Capabilities.screenResolutionX / 1.5;
 static var resizey:Int = Capabilities.screenResolutionY / 1.5;
 
+
 static var redirectStates:Map<FlxState, String> = [
     MainMenuState => "MM/MMMain",
     StoryMenuState => "MM/MMStory"
@@ -49,16 +52,11 @@ function preStateSwitch() {
 	FlxG.mouse.visible = true;
     
     window.title = "Mario Madness V2";
+    Framerate.codenameBuildField.text = 'Mario Madness V2 (CNE Port)';
     for (redirectState in redirectStates.keys())
         if (FlxG.game._requestedState is redirectState)
             FlxG.game._requestedState = new ModState(redirectStates.get(redirectState));
 }
-
-function update() {
-    Framerate.codenameBuildField.text = 'Mario Madness V2 (CNE Port)';
-}
-
-
 function new(){
     // settings that get set to their default values on first launch
     if (FlxG.save.data.flashingLights == null) FlxG.save.data.flashingLights = true;
@@ -69,4 +67,11 @@ function new(){
     if (FlxG.save.data.virtualApps == null) FlxG.save.data.virtualApps = true;
     if (FlxG.save.data.virtualShaders == null) FlxG.save.data.virtualShaders = true;
     if (FlxG.save.data.transparency_value == null) FlxG.save.data.transparency_value = 0;
+
+    //Story progression
+    if (FlxG.save.data.storySave == null) FlxG.save.data.storySave = 0;
 }
+    Lib.application.onExit.add(function(i:Int) {
+        FlxG.save.flush();
+        trace("Saving Mod Progress...Scrote");
+    });

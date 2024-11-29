@@ -30,15 +30,11 @@ function create(event) {
     event.cancel();
     event.music = "mario/mario-time" + Std.string(FlxG.random.int(1,3));
 
-    if (menuItems.contains("Botplay") && PlayState.isStoryMode) {
-		menuItems.remove("Botplay");
-	}
-
     cameras = [];
 
     FlxG.cameras.add(pauseCam, false);
 
-	pauseCam.bgColor = 0x88000000;
+    pauseCam.bgColor = 0x88000000;
     pauseCam.alpha = 0;
 
     bg = new FlxSprite(-400,0).loadGraphic(Paths.image("menus/MMpausemenu/momichi"));
@@ -46,10 +42,17 @@ function create(event) {
     bg.alpha = 0;
     add(bg);
 
-    modeTxt = new FlxText(566, 31,0,"Freeplay",17);
+    modeTxt = new FlxText(566, 31,0,"",17);
     modeTxt.alpha = 0;
     modeTxt.setFormat(Paths.font("mariones.ttf"),17,FlxColor.WHITE, "Center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     add(modeTxt);
+    if (PlayState.isStoryMode){
+	modeTxt.text = "Story Mode";
+    }else if (PlayState.isWarp){
+	modeTxt.text = "Warp Zone";
+    }else{
+	modeTxt.text = "Freeplay";
+    }
 
     desctext = new FlxText(566, 271, 0, "", 12);
     desctext.text = "Description";
@@ -66,6 +69,13 @@ function create(event) {
     add(line2);
 
     txtdesc = Paths.txt("desc/" + songName);
+    if (muymalo > 1){
+        txtdesc = Paths.txt('desc/' + songName + muymalo);
+    }
+    else
+    {
+        txtdesc = Paths.txt('desc/' + songName);
+    }
     funni = CoolUtil.coolTextFile(txtdesc);
 
     descAll = new FlxText(566, desctext.y + 40, 700, "", 12);

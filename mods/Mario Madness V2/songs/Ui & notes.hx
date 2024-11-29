@@ -25,6 +25,7 @@ var goods:Int = 0;
 var bads:Int = 0;
 var shits:Int = 0;
 public var timeBarBG:FlxSprite;
+public var healthOverlay:FlxSprite;
 public var timeBar:FlxBar;
 public var timeTxt:FlxText; 
 public var hudTxt:FlxText;
@@ -177,8 +178,6 @@ function update(elapsed:Float) {
     var acc = FlxMath.roundDecimal(Math.max(accuracy, 0) * 100, 2);
     var rating:String = getRating(accuracy);
     if (songScore > 0 || acc > 0 || misses > 0) hudTxt.text = "Score: " + songScore + "    Misses: " + misses +  "    Rating: " + rating + " (" + acc + "%)";
-
-
 }
 
 function onPlayerHit(event) {
@@ -206,7 +205,18 @@ function onPlayerHit(event) {
 }
 
 function postCreate() {
-
+    if(FlxG.save.data.callLuigi){
+        healthBarBG.loadGraphic(Paths.image("game/healthbars/healthBarNEWluigi"));
+    }else{
+        healthBarBG.loadGraphic(Paths.image("game/hud/Mario Madness/healthBarBG"));
+    }
+    healthBarBG.screenCenter(FlxAxes.X);
+    healthBarBG.y = healthBar.y - 21;
+    if(downscroll) healthBarBG.y = 0.11 * FlxG.height;
+    healthBarBG.scrollFactor.set();
+    remove(healthBar);
+    insert(members.indexOf(healthBarBG), healthBar);
+    insert(members.indexOf(icoP1), healthBarBG);
 
     for (i in [missesTxt, accuracyTxt, scoreTxt]) i.visible = false;
 
@@ -216,7 +226,6 @@ function postCreate() {
     insert(members.indexOf(icoP1), hudTxt);
 
     healthBar.y = FlxG.height * 0.89;
-    healthBarBG.y = healthBar.y - 4;
 
     iconP1.y = healthBar.y - 75;
     iconP2.y = iconP1.y;

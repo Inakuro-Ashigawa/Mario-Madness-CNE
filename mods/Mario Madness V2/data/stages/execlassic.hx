@@ -83,9 +83,13 @@ function beatHit(curBeat) {
         case 516:
             FlxTween.tween(fireL, {y: -800}, 20, {ease: FlxEase.quadInOut});
             FlxTween.tween(fireR, {y: -800}, 20, {ease: FlxEase.quadInOut});
-            FlxTween.tween(smoke, {alpha: 1}, 25);
-            FlxTween.tween(FlxG.camera, {zoom: 0.7}, 13, {ease: FlxEase.sineInOut});
+            FlxTween.tween(smoke, {alpha: 1}, 15);
+            dad.playAnim("laugh");
             defaultCamZoom = 0.75;
+       case 517:
+             FlxTween.tween(FlxG.camera, {zoom: 0.7}, 13, {ease: FlxEase.sineInOut});
+             FlxTween.tween(camGame, {zoom: 0.7}, 13, {ease: FlxEase.sineInOut});
+             defaultCamZoom = 0.7;
         case 583:
             mosaicTween = FlxTween.num(0.1, 80, 5, {ease: FlxEase.circInOut, onUpdate: (_) -> {
                 mosaic.data.uBlocksize.value = [mosaicTween.value, mosaicTween.value];

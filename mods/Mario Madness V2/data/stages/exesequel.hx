@@ -240,7 +240,7 @@ function funnyending(){
     FlxTween.tween(timeBarBG,{alpha: 0}, 0.5);
     FlxTween.tween(timeBar,{alpha: 0}, 0.5);
     FlxTween.tween(timeTxt,{alpha: 0}, 0.5);
-    FlxTween.tween(healthOverlay,{alpha: 0}, 0.5);
+    FlxTween.tween(healthBarBG,{alpha: 0}, 0.5);
     FlxTween.tween(icoP1,{alpha: 0}, 0.5);
     FlxTween.tween(icoP2,{alpha: 0}, 0.5);
     FlxTween.tween(SS_floor,{alpha: 0}, 0.5);

@@ -9,33 +9,55 @@ class BGSprite extends FlxSprite
 	{
 		super(x, y);
 
-		if (animArray != null)
+		this.x = x;
+        this.y = y;
+
+
+		if (animArray != null && animArray.length > 0)
 		{
-			frames = Paths.getSparrowAtlas(image);
-			for (i in 0...animArray.length)
+			// Load sprite atlas frames
+			var atlasFrames = Paths.getFrames(image);
+			if (atlasFrames != null)
 			{
-				var anim:String = animArray[i];
-				animation.addByPrefix(anim, anim, 24, loop);
-				if (idleAnim == null)
+				frames = atlasFrames;
+				// Add animations from animArray
+				for (anim in animArray)
 				{
-					idleAnim = anim;
-					animation.play(anim);
+					animation.addByPrefix(anim, anim, 24, loop);
+					if (idleAnim == null)
+					{
+						idleAnim = anim;
+					}
+				}
+				// Play the first animation by default
+				if (idleAnim != null)
+				{
+					animation.play(idleAnim);
 				}
 			}
+			else
+			{
+				trace("Error: Frames not found for image: " + image);
+			}
+		}
+		else if (image != null)
+		{
+			// Load static graphic if no animations are defined
+			loadGraphic(Paths.image(image));
+			active = false;
 		}
 		else
 		{
-			if (image != null)
-			{
-				loadGraphic(Paths.image(image));
-			}
-			active = false;
+			trace("Error: No image or animations provided.");
 		}
+
+		// Set scroll factor
 		scrollFactor.set(scrollX, scrollY);
 	}
 
-	public function dance(?forceplay:Bool = false)
+	public function create(?forceplay:Bool = false)
 	{
+		// Play the idle animation if it exists
 		if (idleAnim != null)
 		{
 			animation.play(idleAnim, forceplay);

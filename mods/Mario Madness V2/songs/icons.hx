@@ -1,7 +1,9 @@
-static var icoP1:HealthIcon;
-static var icoP2:HealthIcon;
+public static var icoP1:HealthIcon;
+public static var icoP2:HealthIcon;
 
 static var flipIcoBop:Bool = false; // use this for when bf is on the other side!! (like for day out for example)
+
+var songName = PlayState.SONG.meta.displayName;
 
 function postCreate() {
     icoP1 = new HealthIcon(boyfriend != null ? boyfriend.getIcon() : "face", true);
@@ -12,7 +14,7 @@ function postCreate() {
         insert(members.indexOf(healthBar) + 2, ico);
     }
 
-    for (i in [iconP1, iconP2]) remove(i); // fuck you og icons
+    for (i in [iconP1, iconP2]) remove(i);
 }
 
 function update(elapsed:Float){
@@ -21,6 +23,12 @@ function update(elapsed:Float){
 
     icoP1.health = healthBar.percent / 100;
     icoP2.health = 1 - (healthBar.percent / 100);
+
+    icoP1.alpha = iconP1.alpha;
+    icoP2.alpha = iconP2.alpha;
+
+    icoP1.shader = iconP1.shader;
+    icoP2.shader = iconP2.shader;
 }
 
 function beatHit(){

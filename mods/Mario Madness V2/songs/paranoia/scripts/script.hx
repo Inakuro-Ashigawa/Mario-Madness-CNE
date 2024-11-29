@@ -4,6 +4,7 @@ var tweenWindow1X, tweenWindow1Y, tweenWindow2X, tweenWindow2Y:FlxTween;
 var timerTween:NumTween;
 
 function create(){
+
     // i'll try to make this an array later, i aint too proud of this code
     tweenWindow1Y = FlxTween.tween(window, {y: changey + changex / 4}, 3, {ease: FlxEase.quadInOut, type: 4});
     tweenWindow1Y.active = false;
@@ -31,11 +32,14 @@ function stepHit(){
     if (FlxG.save.data.virtualWindow){
         switch (curStep){
             case 320:
-                window.x = changex - 20;
-                window.y = changey + 50;
+                if (PlayState.difficulty == "hard") window.x = changex - 20;
+                if (PlayState.difficulty == "hard") window.y = changey + 50;
+		window.x = changex - 250;
+         
             case 324:
-                window.x = changex + 20;
-                window.y = changey - 50;
+                if (PlayState.difficulty == "hard") window.x = changex + 20;
+                if (PlayState.difficulty == "hard") window.y = changey - 50;
+		window.x = changex + 550;
             case 328:
                 window.x = changex + 100;
                 window.y = changey + 100;

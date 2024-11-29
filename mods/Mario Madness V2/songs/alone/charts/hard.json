@@ -4068,7 +4068,7 @@
 				}
 			],
 			"characters": [
-				"betanew"
+				"alone/betanew"
 			],
 			"visible": true,
 			"type": 0
@@ -7276,7 +7276,7 @@
 				}
 			],
 			"characters": [
-				"bfbetanew"
+				"alone/bfbetanew"
 			],
 			"visible": true,
 			"type": 1
@@ -7467,7 +7467,7 @@
 				}
 			],
 			"characters": [
-				"mario-alone"
+				"alone/mario-alone"
 			],
 			"type": 2,
 			"visible": false,
@@ -7490,7 +7490,7 @@
 				}
 			],
 			"characters": [
-				"gfbetanew"
+				"alone/gfbetanew"
 			],
 			"type": 2,
 			"visible": false,
